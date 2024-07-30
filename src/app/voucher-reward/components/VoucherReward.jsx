@@ -10,6 +10,7 @@ import { darkBounce } from '@/utils/toastify';
 import { toast } from 'react-toastify';
 import { tokenAuth } from "@/token/tokenAuth";
 import { useRouter } from "next/navigation";
+import { formatDate } from "@/utils/stringManilupation";
 
 
 
@@ -35,7 +36,7 @@ export default function VoucherReward() {
     }}
     /* SEARCH DATA */
     async function searchData() {
-        const formData = trim(searchInput)
+        const formData = searchInput.trim();
         try{
             const result = await axiosClientAPI.get(`voucher-reward-search-by-code?search=${formData}`, config)
             .then((response) => {
@@ -82,7 +83,7 @@ export default function VoucherReward() {
                     return;
                 }
                 if(response.data.status == 0){
-                    toast.success(reponse.data.message, darkBounce);
+                    toast.warn(reponse.data.message, darkBounce);
                     setIsSubmit(false);
                     return;
                 }
@@ -114,7 +115,7 @@ export default function VoucherReward() {
      {/* Title */}
      <div className="w-[100%] flex items-center justify-center flex-col">
         <h1 className="leading-none pt-[2rem] pb-[1.5rem] text-center font-black text-[4rem]">
-            Redeem Reward</h1>
+            Verify Reward</h1>
             <hr className="border-t-4 border-black lg:w-[15%] w-[30%] pb-[3.5rem]" />
     </div> 
 
@@ -169,7 +170,7 @@ export default function VoucherReward() {
                     className='lg:w-[20%] w-[100%] lg:px-[2.5rem] py-[1rem] text-center rounded-xl text-white bg-gradient-to-br from-orange-500 to-red-700 hover:bg-gradient-to-br hover:from-red-500 hover:to-red-800 transition ease-in-out duration-200'>
                     { isSearch === true ? 
                         'Processing' : 
-                        'Redeem Points'
+                        'Verify Reward'
                     }
                 </button>
             </div>
@@ -198,11 +199,11 @@ export default function VoucherReward() {
                 </div>
                 <div className='flex items-start justify-start gap-4 mb-2'>
                     <div className='w-[20%]'>Start Date:</div>
-                    <div className='w-[80%] font-semibold'>{data?.campaign_managed?.start_date}</div>      
+                    <div className='w-[80%] font-semibold'>{formatDate(data?.campaign_managed?.start_date)}</div>      
                 </div>
                 <div className='flex items-start justify-start gap-4 mb-2'>
                     <div className='w-[20%]'>End Date:</div>
-                    <div className='w-[80%] font-semibold'>{data?.campaign_managed?.end_date}</div>      
+                    <div className='w-[80%] font-semibold'>{formatDate(data?.campaign_managed?.end_date)}</div>      
                 </div>
                 <div className='flex items-start justify-start gap-4 mb-2'>
                     <div className='w-[20%]'>Target Points:</div>

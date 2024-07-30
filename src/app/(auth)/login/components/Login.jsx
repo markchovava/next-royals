@@ -69,7 +69,7 @@ export default function Login() {
                 setIsSubmit(false);
                 setAuthToken(response.data.auth_token);
                 setRoleToken(response.data.role_level);
-                router.push('/campaign')
+                router.push('/campaign-managed')
                 toast.success(response.data.message, darkBounce);
                 
               } else if(response.data.status == 0) {

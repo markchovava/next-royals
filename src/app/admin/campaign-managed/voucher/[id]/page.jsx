@@ -1,14 +1,12 @@
-import Link from "next/link";
-import { BsChevronRight } from 'react-icons/bs';
-import { getPricePriorityOne } from "@/api/getPrices";
-import CampaignManagedEdit from "./components/CampaignManagedEdit";
+import React from 'react'
+import VoucherList from './components/VoucherList'
+import { BsChevronRight } from 'react-icons/bs'
+import Link from 'next/link'
 
 
 
 
-export default async function page({ params: {id}}) {
-  const priceData = await getPricePriorityOne();
-
+export default function page({ params: {id} }) {
   return (
     <>
         {/* BREADCRUMBS */}
@@ -19,22 +17,27 @@ export default async function page({ params: {id}}) {
                   <Link href='/' className='flex justify-start items-center'>
                     Home</Link> 
                 </li>
+               
                 <li><BsChevronRight /></li>
                 <li className='flex justify-start items-center'>
                   <Link href='/admin/campaign-managed'>
-                  Managed Campaign List</Link>
+                    Managed Campaign List</Link>
                 </li>
                 <li><BsChevronRight /></li>
                 <li className='flex justify-start items-center'>
-                  <Link href={`/admin/campaign-managed/edit/${id}`} className='font-semibold'>
-                    Edit Managed Campaign</Link>
+                  <Link href={`/admin/campaign-managed/${id}`} className=''>
+                    View Managed Campaign</Link>
+                </li>
+                <li><BsChevronRight /></li>
+                <li className='flex justify-start items-center'>
+                  <Link href={`/admin/campaign-managed/voucher/${id}`} className='font-semibold'>
+                    Voucher List</Link>
                 </li>
               </ul>
           </div>
         </section>
         
-        <CampaignManagedEdit id={id} priceData={priceData} />
-
+        <VoucherList id={id} />
     </>
   )
 }

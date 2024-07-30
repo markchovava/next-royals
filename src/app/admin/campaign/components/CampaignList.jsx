@@ -2,6 +2,7 @@
 import axiosClientAPI from '@/api/axiosClientAPI';
 import Loader from '@/app/components/Loader';
 import { tokenAuth } from '@/token/tokenAuth';
+import { formatDate } from '@/utils/stringManilupation';
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
@@ -136,9 +137,9 @@ export default function CampaignList() {
                             <div className="w-[20%] p-3 border-l border-slate-300">
                                 {item?.user?.name ? item?.user?.name : item?.user?.email}
                             </div>
-                            <div className="w-[20%] p-3 border-l border-slate-300 flex items-center gap-1 justify-start">
-                                <span>{item.campaign_managed.start_date ? item.campaign_managed.start_date : '--/--/--'}</span> to 
-                                <span>{item.campaign_managed.end_date ? item.campaign_managed.end_date : '--/--/--'}</span>
+                            <div className="w-[20%] p-3 border-l border-slate-300 ">
+                                <span className='mr-1'>{item.campaign_managed.start_date ? formatDate(item.campaign_managed.start_date) : '--/--/--'}</span> to 
+                                <span className='ml-1'>{item.campaign_managed.end_date ? formatDate(item.campaign_managed.end_date) : '--/--/--'}</span>
                             </div>
                             <div className="w-[15%] p-3 border-l border-slate-300">{item.current_points} points</div>
                             <div className="w-[15%] p-3 border-l border-slate-300">{item.reward.target_points} points</div>

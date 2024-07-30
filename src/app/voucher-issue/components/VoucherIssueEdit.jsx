@@ -112,9 +112,9 @@ export default function VoucherIssueEdit() {
                 {/* CAMPAIGN */}  
                 <div className='flex items-center justify-start gap-4'>
                     <Link
-                        href='/campaign'
+                        href='/campaign-managed'
                         className='px-[2rem] py-[1rem] rounded-xl text-white bg-gradient-to-br from-[#6c0868] to-purple-800 hover:bg-gradient-to-br hover:from-purple-800 hover:to-[#6c0868] transition ease-in-out duration-200'>
-                        My Campaigns
+                        Managed Campaigns
                     </Link>        
                 </div> 
             </div>

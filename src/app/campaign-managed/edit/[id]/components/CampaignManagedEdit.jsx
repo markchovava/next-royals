@@ -43,7 +43,7 @@ export default function CampaignManagedEdit({id, priceData }) {
                     name: res?.reward.name,
                     target_points: res?.reward.target_points,
                     points_per_voucher: res?.reward.points_per_voucher,
-                    price_per_voucher: res?.reward.price_per_voucher,
+                    price_per_voucher: res?.reward.price_per_voucher / 100,
                 }) 
             })
           } catch (error) {
@@ -57,15 +57,16 @@ export default function CampaignManagedEdit({id, priceData }) {
         const formData = {
           name: data?.name,
           description: data?.description,
-          start_date: data?.start_date,
-          end_date: data?.end_date,
+          //start_date: data?.start_date,
+          //end_date: data?.end_date,
+          num_of_days: data?.num_of_days,
           total: data?.total, // in cents
           quantity: data?.quantity,
           /* REWARD */
           reward_name: reward?.name,
           target_points: reward?.target_points,
           points_per_voucher: reward?.points_per_voucher,
-          price_per_voucher: reward?.price_per_voucher,
+          price_per_voucher: reward?.price_per_voucher * 100,
           /* COMPANY */
           company_name: data?.company_name,
           company_phone: data?.company_phone,
@@ -109,6 +110,8 @@ export default function CampaignManagedEdit({id, priceData }) {
 
 
     if(!data){ return (<Loader />) }
+
+    console.log(data)
   
 
   return (
@@ -189,60 +192,6 @@ export default function CampaignManagedEdit({id, priceData }) {
             </div>
         </section>
 
-        {/* Reward Info */}
-        <section className='mx-auto w-[90%] lg:overflow-hidden overflow-auto py-[2rem] px-[1.5rem]  mb-[4rem] bg-white drop-shadow-lg'>
-            <div className="w-[100%] mb-[2rem] text-5xl font-light flex items-center justify-start">
-                Reward Info
-            </div>
-            {/* REWARD NAME */}
-            <div className="w-[100%] mb-[2rem]">
-                <h6 className='pb-1'>Reward Name:</h6>
-                <input 
-                    type="text" 
-                    name="reward_name" 
-                    onChange={(e) => setReward({...reward, name: e.target.value})}
-                    value={reward?.name}
-                    placeholder="Write your Reward Name here..." 
-                    className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
-            </div>
-            {/* TARGET POINTS */}
-            <div className="w-[100%] mb-[2rem]">
-                <h6 className='pb-1'>Target Points:</h6>
-                <input 
-                    type="number" 
-                    name="target_points" 
-                    onChange={(e) => setReward({...reward, target_points: e.target.value})}
-                    value={reward?.target_points}
-                    placeholder="Write your Target Points here..." 
-                    className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
-            </div>
-             {/* POINTS PER VOUCHER */}
-             <div className="w-[100%] mb-[2rem] grid grid-cols-2 gap-6">
-                <div className='w-[100%]'>
-                    <h6 className='pb-1'>Points per Voucher:</h6>
-                    <input 
-                        type="number" 
-                        name="points_per_voucher" 
-                        onChange={(e) => setReward({...reward, points_per_voucher: e.target.value})}
-                        value={reward?.points_per_voucher}
-                        placeholder="Write Point per Voucher here..." 
-                        className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
-                </div>
-                {/* PRICE PER VOUCHER */}
-                <div className='w-[100%]'>
-                    <h6 className='pb-1'>Price per Voucher:</h6>
-                    <input 
-                        type="number" 
-                        name="price_per_voucher" 
-                        onChange={(e) => setReward({...reward, price_per_voucher: e.target.value})}
-                        value={reward?.price_per_voucher}
-                        placeholder="Write Price per Voucher here..." 
-                        className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
-                </div>
-             </div>
-            {/*  */}
-            
-        </section>
 
         {/* Campaign Info */}
         <section className='mx-auto w-[90%] lg:overflow-hidden overflow-auto pt-[2rem] px-[1.5rem]  mb-[4rem] bg-white drop-shadow-lg'>
@@ -270,8 +219,20 @@ export default function CampaignManagedEdit({id, priceData }) {
                     placeholder="Write your Description here..." 
                     className="w-[100%] h-[8rem] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300"></textarea>
             </div>
+            {/* NUMBER OF DAYS */}
+            <div className="w-[100%] mb-[2rem]">
+                <h6 className='pb-1'>Number of Days:</h6>
+                <input 
+                    type="number" 
+                    name="num_of_days" 
+                    value={data.num_of_days}
+                    onChange={handleInput}
+                    min={1}
+                    placeholder="Write the Number of Days here..." 
+                    className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
+            </div>
             {/* DATES */}
-            <div className='w-[100%] mb-[2rem] grid grid-cols-2 gap-6'>
+            {/* <div className='w-[100%] mb-[2rem] grid grid-cols-2 gap-6'>
                 <div className='w-[100%]'>
                     <h6 className='pb-1'>Start Date:</h6>
                     <input 
@@ -292,9 +253,15 @@ export default function CampaignManagedEdit({id, priceData }) {
                         placeholder="Write Start Date here..." 
                         className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
                 </div>
-            </div>
-            {/* QUANTITY */}
-            <div className='w-[100%] mb-[2rem] grid grid-cols-3 gap-6'>
+            </div> */}
+            
+        </section>
+
+
+        {/* CALCULATIONS */}
+        <section className='mx-auto w-[90%] lg:overflow-hidden overflow-auto py-[2rem] px-[1.5rem]  mb-[4rem] bg-white drop-shadow-lg'>
+             {/* QUANTITY */}
+             <div className='w-[100%] mb-[2rem] grid grid-cols-3 gap-6'>
                 <div className='w-[100%]'>
                     <h6 className='pb-1'>Vouchers Quantity:</h6> 
                     <input 

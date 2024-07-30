@@ -105,6 +105,10 @@ export default function CampaignManagedStatus({ id }) {
                                 Active</option>
                             <option value='Completed' selected={data.status === 'Completed' && 'selected'}>
                                 Completed</option>
+                            <option value='Paused' selected={data.status === 'Paused' && 'selected'}>
+                                Paused</option>
+                            <option value='Coming Soon' selected={data.status === 'Coming Soon' && 'selected'}>
+                                Coming Soon</option>
                     </select>
                 </div>
                 

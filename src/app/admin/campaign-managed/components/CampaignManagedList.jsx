@@ -2,11 +2,12 @@
 import axiosClientAPI from "@/api/axiosClientAPI";
 import Loader from "@/app/components/Loader";
 import { tokenAuth } from "@/token/tokenAuth";
+import { formatDate } from "@/utils/stringManilupation";
 import { darkBounce } from "@/utils/toastify";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-import { FaEye } from "react-icons/fa";
+import { FaCalendarDay, FaEye } from "react-icons/fa";
 import { MdDeleteForever, MdEdit } from 'react-icons/md';
 import { TbProgress } from "react-icons/tb";
 import { toast } from "react-toastify";
@@ -152,13 +153,13 @@ export default function CampaignManagedList() {
                       <div className="w-[20%] p-3 border-l border-slate-300">
                         {item.company_name}
                       </div>
-                      <div className="w-[15%] p-3 border-l border-slate-300">
-                        {item.start_date} - {item.end_date}
+                      <div className="w-[15%] p-3 border-l border-slate-300 flex justify-start gap-1">
+                          <span className="text-green-700">{formatDate(item.start_date)}</span> 
+                          <span>to</span>
+                          <span className="text-cyan-700">{formatDate(item.end_date)}</span>
                       </div>
                       <div className="w-[15%] p-3 border-l border-slate-300"> 
-                        <span className={`${item.status === 'Processing' && 'bg-green-700'}
-                          ${item.status === 'Active' && 'bg-pink-600'}
-                          ${item.status === 'Completed' && 'bg-blue-700'} text-white px-2 py-1 rounded-lg`}>
+                        <span className={`bg-blue-700 text-white px-2 py-1 rounded-lg`}>
                           {item.status}
                         </span>
                       </div>
@@ -174,6 +175,9 @@ export default function CampaignManagedList() {
                           </Link>
                           <Link href={`/admin/campaign-managed/status/${item.id}`}> 
                               <TbProgress className='hover:text-green-500 duration-150 hover:scale-110 transition-all ease-in' /> 
+                          </Link>
+                          <Link title="Update Dates" href={`/admin/campaign-managed/duration/${item.id}`}> 
+                              <FaCalendarDay className='hover:text-cyan-500 duration-150 hover:scale-110 transition-all ease-in' /> 
                           </Link>
                           <button> 
                               <MdDeleteForever 

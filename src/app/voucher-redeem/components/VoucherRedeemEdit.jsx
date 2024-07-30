@@ -33,7 +33,11 @@ export default function Voucher() {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${getAuthToken()}`
     }}
-    /* SEARCH DATA */
+
+    const handleInput = (e) => {
+        setData({...data, [e.target.name]: e.target.value})
+    }
+            /* SEARCH DATA */
     async function searchData() {
         try{
             const result = await axiosClientAPI.get(`voucher-generated-search-by-code?search=${searchInput}`, config)
@@ -66,7 +70,6 @@ export default function Voucher() {
             code: data.code,
             voucher_generated_id: data.id,
         }
-        console.log(formData)
         try{
             const result = await axiosClientAPI.post(`campaign-store-by-points`, formData, config)
             .then((response) => {
@@ -201,7 +204,10 @@ export default function Voucher() {
                 <div className='flex items-center justify-start gap-4 mb-2'>
                     <div className='w-[20%]'>Phone:</div>
                     <div className='w-[80%] font-semibold'>
-                        <input type="text" className="w-[100%] px-4 py-2 rounded-xl outline-none border border-slate-300" />
+                        <input type="text" 
+                            name="phone"
+                            onChange={(e) => setData({...data, phone: e.target.value})}
+                        className="w-[100%] px-4 py-2 rounded-xl outline-none border border-slate-300" />
                     </div>      
                 </div>
                

@@ -55,6 +55,8 @@ export default function NavAdmin() {
                     <ul className="flex items-center justify-start gap-4">
                         {/* Settings */}
                         <li className="relative"
+                            onMouseEnter={() => setIsActive({one: true})}
+                            onMouseLeave={() => setIsActive({one: false})}
                             onClick={() => { setIsActive({one: !isActive.one}) }}>
                             <span className="cursor-pointer flex items-center justify-start gap-1 hover:text-blue-100">
                                 Settings <IoChevronDownSharp />
@@ -66,7 +68,7 @@ export default function NavAdmin() {
                                         animate={{ opacity:1 }}
                                         exit={{ opacity:1 }}
                                         transition={{ duration: 0.6, type:'spring' }}
-                                        className="top-[125%] left-[-0.5rem] w-[160%] bg-[#570253] absolute z-10">
+                                        className="top-[105%] left-[-0.5rem] w-[160%] bg-[#570253] absolute z-10">
                                         <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
                                             <Link href='/admin/app-info' className=" w-[100%]">AppInfo</Link>
                                         </li>
@@ -87,7 +89,9 @@ export default function NavAdmin() {
                         
                         {/* Users */}
                         <li className="relative"
-                           onClick={() => { setIsActive({two: !isActive.two}) }}>
+                            onMouseEnter={() => setIsActive({two: true})}
+                            onMouseLeave={() => setIsActive({two: false})}
+                            onClick={() => { setIsActive({two: !isActive.two}) }}>
                             <span className="cursor-pointer flex items-center justify-start gap-1 hover:text-blue-100">
                                 Users <IoChevronDownSharp />
                             </span>
@@ -98,7 +102,7 @@ export default function NavAdmin() {
                                         animate={{ opacity:1 }}
                                         exit={{ opacity:1 }}
                                         transition={{ duration: 0.6, type:'spring' }}
-                                        className="top-[125%] left-[-0.5rem] w-[160%] bg-[#570253] absolute z-10">
+                                        className="top-[105%] left-[-0.5rem] w-[160%] bg-[#570253] absolute z-10">
                                         <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
                                             <Link href='/admin/user/add' className=" w-[100%]">Add User</Link>
                                         </li>
@@ -115,7 +119,9 @@ export default function NavAdmin() {
                         
                         {/* Campaign */}
                         <li className="relative"
-                           onClick={() => { setIsActive({three: !isActive.three}) }}>
+                            onMouseEnter={() => setIsActive({three: true})}
+                            onMouseLeave={() => setIsActive({three: false})}
+                            onClick={() => { setIsActive({three: !isActive.three}) }}>
                             <span className="cursor-pointer flex items-center justify-start gap-1 hover:text-blue-100">
                                 Campaign <IoChevronDownSharp />
                             </span>
@@ -126,7 +132,7 @@ export default function NavAdmin() {
                                         animate={{ opacity:1 }}
                                         exit={{ opacity:1 }}
                                         transition={{ duration: 0.6, type:'spring' }}
-                                        className="top-[125%] left-[-0.5rem] w-[160%] bg-[#570253] absolute z-10">
+                                        className="top-[105%] left-[-0.5rem] w-[160%] bg-[#570253] absolute z-10">
                                         <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
                                             <Link href='/admin/campaign/' className=" w-[100%]">Campaign List</Link>
                                         </li>
@@ -138,6 +144,8 @@ export default function NavAdmin() {
                         
                         {/* Program */}
                         <li className="relative"
+                            onMouseEnter={() => setIsActive({four: true})}
+                            onMouseLeave={() => setIsActive({four: false})}
                             onClick={() => { setIsActive({four: !isActive.four}) }}>
                             <span className="cursor-pointer flex items-center justify-start gap-1 hover:text-blue-100">
                                Managed Campaign <IoChevronDownSharp />
@@ -149,7 +157,7 @@ export default function NavAdmin() {
                                         animate={{ opacity:1 }}
                                         exit={{ opacity:1 }}
                                         transition={{ duration: 0.6, type:'spring' }}
-                                        className="top-[125%] left-[-0.5rem] w-[130%] bg-[#570253] absolute z-10">
+                                        className="top-[100%] left-[-0.5rem] w-[130%] bg-[#570253] absolute z-10">
                                         <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
                                             <Link href='/admin/campaign-managed/add' className=" w-[100%]">
                                             Add Managed Campaign</Link>
@@ -165,6 +173,8 @@ export default function NavAdmin() {
                         
                         {/* Voucher */}
                         <li className="relative"
+                            onMouseEnter={() => setIsActive({five: true})}
+                            onMouseLeave={() => setIsActive({five: false})}
                             onClick={() => { setIsActive({five: !isActive.five}) }}>
                             <span className="cursor-pointer flex items-center justify-start gap-1 hover:text-blue-100">
                                 Voucher <IoChevronDownSharp />
@@ -176,7 +186,7 @@ export default function NavAdmin() {
                                         animate={{ opacity:1 }}
                                         exit={{ opacity:1 }}
                                         transition={{ duration: 0.6, type:'spring' }}
-                                        className="top-[125%] left-[-0.5rem] w-[160%] bg-[#570253] absolute z-10">
+                                        className="top-[105%] left-[-0.5rem] w-[160%] bg-[#570253] absolute z-10">
                                         <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
                                             <Link href='/admin/redeem-voucher' className=" w-[100%]">Redeem Vouchers</Link>
                                         </li>
@@ -191,6 +201,8 @@ export default function NavAdmin() {
                     </ul>
                 </div>
                 <div className="relative"
+                     onMouseEnter={() => setIsActive({six: true})}
+                     onMouseLeave={() => setIsActive({six: false})}
                     onClick={() => { setIsActive({six: !isActive.six}) }}>
                     <span className="cursor-pointer flex items-center justify-start gap-1 hover:text-slate-100">
                         <FaUser />
@@ -203,7 +215,7 @@ export default function NavAdmin() {
                                     animate={{ opacity:1 }}
                                     exit={{ opacity:1 }}
                                     transition={{ duration: 0.6, type:'spring' }}
-                                    className="top-[125%] left-[-0.5rem] w-[160%] bg-[#570253] absolute z-10">
+                                    className="top-[105%] left-[-0.5rem] w-[160%] bg-[#570253] absolute z-10">
                                     <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
                                         <Link href='/admin/profile' className=" w-[100%]">Profile</Link>
                                     </li>

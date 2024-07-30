@@ -7,6 +7,7 @@ import { FaWhatsappSquare } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa";
 import { useState } from "react";
+import FooterSticker from "./FooterSticker";
 
 
 
@@ -15,8 +16,8 @@ import { useState } from "react";
 export default function Footer({ appInfoData }) {
     const {data, setData} = useState(appInfoData?.data);
 
-    console.log('appInfoData')
-    console.log(appInfoData?.data)
+    //console.log('appInfoData')
+    //console.log(appInfoData?.data)
     
 
   return (
@@ -100,11 +101,8 @@ export default function Footer({ appInfoData }) {
                 </ul>
             </div>
         </div>
-        <div className="fixed bottom-[5%] right-[5%] z-20">
-            <Link href={`#`}>
-                <FaWhatsappSquare className="text-[4rem] text-green-600 border border-white drop-shadow-lg hover:scale-110 transition-all ease-in-out" />
-            </Link>
-        </div>
+       
+       <FooterSticker />
       
     </section>
   )

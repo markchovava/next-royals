@@ -94,7 +94,7 @@ export default function CampaignManagedList() {
         {/* Title */}
         <div className="w-[100%] flex items-center justify-center flex-col">
               <h1 className="leading-none pt-[1.5rem] pb-[1.5rem] text-center font-black text-[4rem]">
-                  All Campaign List</h1>
+                  All Campaigns List</h1>
               <hr className="border-t-4 border-black w-[10%] pb-[3.5rem]" />
         </div> 
 
@@ -142,12 +142,10 @@ export default function CampaignManagedList() {
                         {item.company_name}
                       </div>
                       <div className="w-[15%] p-3 border-l border-slate-300">
-                        {item.start_date} - {item.end_date}
+                        {item.start_date} to {item.end_date}
                       </div>
                       <div className="w-[15%] p-3 border-l border-slate-300"> 
-                        <span className={`${item.status === 'Processing' && 'bg-green-700'}
-                          ${item.status === 'Active' && 'bg-pink-600'}
-                          ${item.status === 'Completed' && 'bg-blue-700'} text-white px-2 py-1 rounded-lg`}>
+                        <span className={`bg-pink-600 text-white px-2 py-1 rounded-lg`}>
                           {item.status}
                         </span>
                       </div>

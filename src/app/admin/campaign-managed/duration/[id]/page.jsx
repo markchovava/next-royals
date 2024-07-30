@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { BsChevronRight } from 'react-icons/bs';
-import { getPricePriorityOne } from "@/api/getPrices";
-import CampaignManagedEdit from "./components/CampaignManagedEdit";
+import DurationEdit from "./components/DurationEdit";
 
 
 
 
 export default async function page({ params: {id}}) {
-  const priceData = await getPricePriorityOne();
+
 
   return (
     <>
@@ -26,14 +25,14 @@ export default async function page({ params: {id}}) {
                 </li>
                 <li><BsChevronRight /></li>
                 <li className='flex justify-start items-center'>
-                  <Link href={`/admin/campaign-managed/edit/${id}`} className='font-semibold'>
-                    Edit Managed Campaign</Link>
+                  <Link href={`/admin/campaign-managed/duration/${id}`} className='font-semibold'>
+                    Edit Dates</Link>
                 </li>
               </ul>
           </div>
         </section>
         
-        <CampaignManagedEdit id={id} priceData={priceData} />
+        <DurationEdit id={id} />
 
     </>
   )

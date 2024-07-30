@@ -70,9 +70,13 @@ export default function NavMainResponsive() {
             <li><Link href='/about' className="flex items-center justify-center gap-1 hover:border-b border-slate-300 hover:text-slate-100 py-3 transition-all ease-in duration-100">
                 ABOUT US</Link></li>
             
-                <li className=''>
+                <li 
+                  onClick={() => setIsActive({one: !isActive.one})} 
+                  onMouseEnter={() => setIsActive({one: true})}
+                  onMouseLeave={() => setIsActive({one: false})}
+                  className=''>
                     <span 
-                        onClick={() => setIsActive({one: !isActive.one})} 
+                        
                         className=" mx-auto cursor-pointer flex items-center justify-center gap-1 hover:border-b border-slate-300 hover:text-slate-100 py-3 transition-all ease-in duration-100">
                         CAMPAIGNS <IoChevronDownSharp />
                     </span>

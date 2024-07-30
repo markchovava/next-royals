@@ -64,7 +64,7 @@ function NavAdminResponsive() {
             <div className='mx-auto w-[100%] px-3 py-2 flex flex-col items-center justify-between'>
                 <ul className="flex flex-col items-center justify-start gap-4">
                     {/* Settings */}
-                    <li className="relative w-[100vw]"
+                    <li className="relative w-[100vw]"  
                             onClick={() => { setIsActive({one: !isActive.one}) }}>
                             <span className={`w-[100vw] py-2 ${isActive.one && 'bg-[#6c0868]'} cursor-pointer flex items-center justify-center gap-1 hover:text-slate-100`}>
                                 Settings <IoChevronDownSharp />
@@ -89,6 +89,12 @@ function NavAdminResponsive() {
                                                 className="text-center flex items-center justify-center w-[100%]">
                                                 Roles</Link>
                                         </li>
+                                        <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
+                                            <Link 
+                                                href='/admin/price' 
+                                                className="text-center flex items-center justify-center w-[100%]">
+                                                Price</Link>
+                                        </li>
                                         
                                     </motion.ul>
                                 </AnimatePresence> 
@@ -109,17 +115,13 @@ function NavAdminResponsive() {
                                     transition={{ duration: 0.6, type:'spring' }}
                                     className="flex flex-col items-center justify-center w-[100vw] bg-[#570253] relative">
                                     <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
-                                        <Link href='/admin/app-info' className="text-center flex items-center justify-center w-[100%]">
-                                            AppInfo</Link>
+                                        <Link href='/admin/user/add' className="text-center flex items-center justify-center w-[100%]">
+                                            Add User</Link>
                                     </li>     
                                     <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
-                                        <Link href='/admin/role' className="text-center flex items-center justify-center w-[100%]">
-                                            Roles</Link>
-                                    </li>
-                                    <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
-                                        <Link href='/admin/delivery' className="text-center flex items-center justify-center w-[100%]">
-                                            Delivery</Link>
-                                    </li>       
+                                        <Link href='/admin/user' className="text-center flex items-center justify-center w-[100%]">
+                                            User List</Link>
+                                    </li>  
                                 </motion.ul>
                             </AnimatePresence> 
                         }
@@ -139,27 +141,18 @@ function NavAdminResponsive() {
                                     transition={{ duration: 0.6, type:'spring' }}
                                     className="flex flex-col items-center justify-center w-[100vw] bg-[#570253] relative">
                                     <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
-                                        <Link href='/admin/app-info' className="text-center flex items-center justify-center w-[100%]">
-                                            AppInfo</Link>
-                                    </li>
-                                
-                                    <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
-                                        <Link href='/admin/role' className="text-center flex items-center justify-center w-[100%]">
-                                            Roles</Link>
-                                    </li>
-                                
-                                    <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
-                                        <Link href='/admin/delivery' className="text-center flex items-center justify-center w-[100%]">Delivery</Link>
-                                    </li>      
+                                        <Link href='/admin/campaign' className="text-center flex items-center justify-center w-[100%]">
+                                            Campaign List</Link>
+                                    </li> 
                                 </motion.ul>
                             </AnimatePresence> 
                         }
                     </li>
-                    {/* Program */}
+                    {/* Managed Campaign */}
                     <li className="relative w-[100vw]"
                         onClick={() => { setIsActive({four: !isActive.four}) }}>
                         <span className={`w-[100vw] py-2 ${isActive.four && 'bg-[#6c0868]'} cursor-pointer flex items-center justify-center gap-1 hover:text-slate-100`}>
-                            Program <IoChevronDownSharp />
+                            Managed Campaign <IoChevronDownSharp />
                         </span>
                         { isActive.four && 
                             <AnimatePresence>
@@ -170,12 +163,42 @@ function NavAdminResponsive() {
                                     transition={{ duration: 0.6, type:'spring' }}
                                     className="flex flex-col items-center justify-center w-[100vw] bg-[#570253] relative">
                                     <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
-                                        <Link href='/admin/program' className="text-center flex items-center justify-center w-[100%]">
-                                            Add Program</Link>
+                                        <Link href='/admin/campaign-managed/add' className="text-center flex items-center justify-center w-[100%]">
+                                        Add Managed Campaign</Link>
                                     </li>
                                     <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
-                                        <Link href='/admin/program/add' className="text-center flex items-center justify-center w-[100%]">
-                                            Program List</Link>
+                                        <Link href='/admin/campaign-managed' className="text-center flex items-center justify-center w-[100%]">
+                                        Managed Campaign List</Link>
+                                    </li>   
+                                </motion.ul>
+                            </AnimatePresence> 
+                        }
+                    </li>
+                    {/* Voucher */}
+                    <li className="relative w-[100vw]"
+                        onClick={() => { setIsActive({six: !isActive.six}) }}>
+                        <span className={`w-[100vw] py-2 ${isActive.six && 'bg-[#6c0868]'} cursor-pointer flex items-center justify-center gap-1 hover:text-slate-100`}>
+                            Voucher <IoChevronDownSharp />
+                        </span>
+                        { isActive.six && 
+                            <AnimatePresence>
+                                <motion.ul 
+                                    initial={{ opacity:1 }}
+                                    animate={{ opacity:1 }}
+                                    exit={{ opacity:1 }}
+                                    transition={{ duration: 0.6, type:'spring' }}
+                                    className="flex flex-col items-center justify-center w-[100vw] bg-[#570253] relative">
+                                    <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
+                                        <Link href='/admin/redeem-voucher' className="text-center flex items-center justify-center w-[100%]">
+                                        Redeem Voucher</Link>
+                                    </li>
+                                    <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
+                                        <Link href='/admin/voucher-issue' className="text-center flex items-center justify-center w-[100%]">
+                                        Issue Voucher</Link>
+                                    </li>   
+                                    <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
+                                        <Link href='/admin/voucher-reward' className="text-center flex items-center justify-center w-[100%]">
+                                        Verify Reward</Link>
                                     </li>   
                                 </motion.ul>
                             </AnimatePresence> 
@@ -204,18 +227,21 @@ function NavAdminResponsive() {
                                 <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
                                     <Link href='/admin/password' className="text-center flex items-center justify-center w-[100%]">
                                         Set Password</Link>
-                                </li>      
-                                <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
-                                    <Link href='/login' className="text-center flex items-center justify-center w-[100%]">
-                                        Login</Link>
-                                </li>      
-                                <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
-                                    <button 
-                                        onClick={() => postLogout() }
-                                        className="text-center flex items-center justify-center w-[100%]">
-                                            Logout
-                                    </button>
-                                </li>      
+                                </li>       
+                                {getAuthToken() ? 
+                                    <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
+                                        <button 
+                                            onClick={() => postLogout() }
+                                            className="text-center flex items-center justify-center w-[100%]">
+                                                Logout
+                                        </button>
+                                    </li>      
+                                :
+                                    <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
+                                        <Link href='/login' className="text-center flex items-center justify-center w-[100%]">
+                                            Login</Link>
+                                    </li>   
+                                }  
                             </motion.ul>
                         </AnimatePresence> 
                     }

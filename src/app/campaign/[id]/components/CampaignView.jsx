@@ -2,6 +2,7 @@
 import axiosClientAPI from '@/api/axiosClientAPI';
 import Loader from '@/app/components/Loader';
 import { tokenAuth } from '@/token/tokenAuth';
+import { formatDate } from '@/utils/stringManilupation';
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
@@ -73,8 +74,8 @@ export default function CampaignView({ id }) {
             <div className="w-[100%] mb-[2rem] flex items-center justify-start">
                 <label className='w-[20%] gap-3'>Campaign Duration:</label>
                 <div className='w-[80%] font-semibold'>
-                    <span className='mr-1'>{data.campaign_managed.start_date}</span> to
-                    <span className='ml-1'>{data.campaign_managed.end_date}</span>
+                    <span className='mr-1'>{formatDate(data.campaign_managed.start_date)}</span> to
+                    <span className='ml-1'>{formatDate(data.campaign_managed.end_date)}</span>
                 </div>
             </div>
             <div className="w-[100%] mb-[2rem] flex items-center justify-start">
@@ -92,7 +93,10 @@ export default function CampaignView({ id }) {
             <div className="w-[100%] mb-[2rem] flex items-center justify-start">
                 <label className='w-[20%] gap-3'>Current Points:</label>
                 <div className='w-[80%] font-semibold'>
-                    <span className='bg-red-600 px-2 py-1 text-white rounded-xl'>{data.current_points}</span> </div>
+                    <span className='bg-red-600 px-2 py-1 text-white rounded-xl'>
+                        {data.current_points}
+                    </span> 
+                </div>
             </div>
             <div className="w-[100%] mb-[2rem] flex items-center justify-start">
                 <label className='w-[20%] gap-3'>Current Quantity:</label>
@@ -107,7 +111,7 @@ export default function CampaignView({ id }) {
                 </div>
             </div>
             <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Reward Points:</label>
+                <label className='w-[20%] gap-3'>Target Points:</label>
                 <div className='w-[80%] font-semibold'>
                     {data?.reward?.target_points}
                 </div>
@@ -123,7 +127,7 @@ export default function CampaignView({ id }) {
                 <label className='w-[20%] gap-3'>Price per Voucher:</label>
                 <div className='w-[80%] font-semibold'>
                     { data.reward?.price_per_voucher 
-                    ? '$' + (data.reward?.price_per_voucher / 100).toFixed(2) 
+                    ? '$' + (data.reward?.price_per_voucher).toFixed(2) 
                     : '$' + (0).toFixed(2) }
                 </div>
             </div>

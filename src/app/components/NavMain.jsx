@@ -56,9 +56,11 @@ export default function NavMain() {
                 <li><Link href='/about' className="flex items-center justify-center gap-1 hover:border-b border-slate-300 hover:text-slate-100 py-3 transition-all ease-in duration-100">
                     ABOUT US</Link>
                 </li>
-                <li className='relative'>
+                <li 
+                    onMouseEnter={() => setIsCampaign(true)}
+                    onMouseLeave={() => setIsCampaign(false)}
+                    className='relative'>
                     <span 
-                        onClick={() => setIsCampaign(!isCampaign)} 
                         className="cursor-pointer flex items-center justify-center gap-1 hover:border-b border-slate-300 hover:text-slate-100 py-3 transition-all ease-in duration-100">
                         CAMPAIGNS <IoChevronDownSharp />
                     </span>
@@ -69,7 +71,7 @@ export default function NavMain() {
                                 animate={{ opacity:1 }}
                                 exit={{ opacity:1 }}
                                 transition={{ duration: 0.6, type:'spring' }}
-                                className="top-[125%] left-[-0.5rem] w-[200%] bg-[#570253] absolute z-10">
+                                className="top-[105%] left-[-0.5rem] w-[200%] bg-[#570253] absolute z-10">
                                  <li className="px-[0.5rem] pb-3 pt-1 hover:bg-[#6c0868]">
                                         <Link href='/campaign-all' className=" w-[100%] h-[100%]">
                                         ALL CAMPAIGNS</Link>
@@ -89,8 +91,8 @@ export default function NavMain() {
                                 <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
                                     <Link href='/voucher-redeem' className=" w-[100%]">REDEEM VOUCHERS</Link>
                                 </li>
-                                <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
-                                    <Link href='/voucher-reward' className=" w-[100%]">REDEEM REWARD</Link>
+                                <li className="px-[0.5rem] py-1 pb-2 hover:bg-[#6c0868]">
+                                    <Link href='/voucher-reward' className=" w-[100%]">VERIFY REWARD</Link>
                                 </li>
                                
                                 

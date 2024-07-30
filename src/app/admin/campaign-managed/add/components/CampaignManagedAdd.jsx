@@ -13,10 +13,12 @@ import { toast } from 'react-toastify';
 
 
 export default function CampaignManagedAdd({ priceData }) {
-    console.log('priceData')
-    console.log(priceData.data)
+
     const router = useRouter();
-    const [data, setData] = useState() 
+    const [data, setData] = useState({
+        points_per_voucher: 1,
+        num_of_days: 1,
+    }) 
     const [isSubmit, setIsSubmit] = useState(false);
     const [price, setPrice] = useState(priceData?.data);
     const { getAuthToken } = tokenAuth();
@@ -38,15 +40,16 @@ export default function CampaignManagedAdd({ priceData }) {
         const formData = {
           name: data.name,
           description: data.description,
-          start_date: data?.start_date,
-          end_date: data?.end_date,
-          total: calculateTotal(), // in cents
+          //start_date: data?.start_date,
+          //end_date: data?.end_date,
+          num_of_days: data?.num_of_days,
+          total: Number(calculateTotal()), // in cents
           quantity: data.vouchers_quantity,
           /* REWARD */
           reward_name: data.reward_name,
           target_points: data.target_points,
           points_per_voucher: data.points_per_voucher,
-          price_per_voucher: data.price_per_voucher,
+          price_per_voucher: Number(data.price_per_voucher) * 100,
           /* COMPANY */
           company_name: data.company_name,
           company_phone: data.company_phone,
@@ -137,7 +140,7 @@ export default function CampaignManagedAdd({ priceData }) {
             </div>
             {/* COMPANY WEBSITE */}
             <div className="w-[100%] mb-[2rem]">
-                <h6 className='pb-1'>Company Website:</h6>
+                <h6 className='pb-1'>Company Website: (optional)</h6>
                 <input 
                     type="text" 
                     name="company_website" 
@@ -145,57 +148,6 @@ export default function CampaignManagedAdd({ priceData }) {
                     placeholder="Write your Company Website here..." 
                     className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
             </div>
-        </section>
-
-        {/* Reward Info */}
-        <section className='mx-auto w-[90%] lg:overflow-hidden overflow-auto py-[2rem] px-[1.5rem]  mb-[4rem] bg-white drop-shadow-lg'>
-            <div className="w-[100%] mb-[2rem] text-5xl font-light flex items-center justify-start">
-                Reward Info
-            </div>
-            {/* REWARD NAME */}
-            <div className="w-[100%] mb-[2rem]">
-                <h6 className='pb-1'>Reward Name:</h6>
-                <input 
-                    type="text" 
-                    name="reward_name" 
-                    onChange={handleInput}
-                    placeholder="Write your Reward Name here..." 
-                    className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
-            </div>
-            {/* TARGET POINTS */}
-            <div className="w-[100%] mb-[2rem]">
-                <h6 className='pb-1'>Target Points:</h6>
-                <input 
-                    type="number" 
-                    name="target_points" 
-                    onChange={handleInput}
-                    placeholder="Write your Target Points here..." 
-                    className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
-            </div>
-             {/* POINTS PER VOUCHER */}
-             <div className="w-[100%] mb-[2rem] grid grid-cols-2 gap-6">
-                <div className='w-[100%]'>
-                    <h6 className='pb-1'>Points per Voucher:</h6>
-                    <input 
-                        type="number" 
-                        name="points_per_voucher" 
-                        onChange={handleInput}
-                        placeholder="Write Point per Voucher here..." 
-                        className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
-                </div>
-                {/* PRICE PER VOUCHER */}
-                <div className='w-[100%]'>
-                    <h6 className='pb-1'>Price per Voucher:</h6>
-                    <input 
-                        type="number" 
-                        name="price_per_voucher" 
-                        onChange={handleInput}
-                        placeholder="Write Price per Voucher here..." 
-                        className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
-                </div>
-             </div>
-            {/*  */}
-            
         </section>
 
         {/* Campaign Info */}
@@ -222,8 +174,20 @@ export default function CampaignManagedAdd({ priceData }) {
                     placeholder="Write your Description here..." 
                     className="w-[100%] h-[8rem] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300"></textarea>
             </div>
+            {/* NMBER OF DAYS */}
+            <div className="w-[100%] mb-[2rem]">
+                <h6 className='pb-1'>Number of Days:</h6>
+                <input 
+                    type="number" 
+                    min={1}
+                    value={data.num_of_days}
+                    name="num_of_days" 
+                    onChange={handleInput}
+                    placeholder="Write the Number of Days here..." 
+                    className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
+            </div>
             {/* DATES */}
-            <div className='w-[100%] mb-[2rem] grid grid-cols-2 gap-6'>
+            {/* <div className='w-[100%] mb-[2rem] grid grid-cols-2 gap-6'>
                 <div className='w-[100%]'>
                     <h6 className='pb-1'>Start Date:</h6>
                     <input 
@@ -242,7 +206,81 @@ export default function CampaignManagedAdd({ priceData }) {
                         placeholder="Write Start Date here..." 
                         className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
                 </div>
+            </div> */}
+            
+        </section>
+
+         {/* Reward Info */}
+         <section className='mx-auto w-[90%] lg:overflow-hidden overflow-auto py-[2rem] px-[1.5rem]  mb-[4rem] bg-white drop-shadow-lg'>
+            <div className="w-[100%] mb-[2rem] text-5xl font-light flex items-center justify-start">
+                Reward Info
             </div>
+            {/* REWARD NAME */}
+            <div className="w-[100%] mb-[2rem]">
+                <h6 className='pb-1'>Reward Name:</h6>
+                <input 
+                    type="text" 
+                    name="reward_name" 
+                    onChange={handleInput}
+                    placeholder="Write your Reward Name here..." 
+                    className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
+            </div>
+            {/* TARGET POINTS */}
+            <div className="w-[100%] mb-[2rem]">
+                <h6 className='pb-1'>Target Points:</h6>
+                <input 
+                    type="number" 
+                    name="target_points" 
+                    onChange={handleInput}
+                    placeholder="Write your Target Points here..." 
+                    className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
+            </div>
+             {/* POINTS PER VOUCHER */}
+             <div className="w-[100%] mb-[2rem] grid grid-cols-2 gap-6">
+                <div className='w-[100%]'>
+                    <h6 className='pb-1 flex gap-1 items-end'>
+                        Points per Voucher: 
+                        <small className='text-blue-700'>
+                        (Default.)
+                        </small>
+                        {/* Reward Voucher:
+                        <small className='text-blue-700 italic'>
+                            (Enter the points required to obtain this reward)
+                        </small> */}
+                    </h6>
+                    <input 
+                        type="number" 
+                        min={1}
+                        name="points_per_voucher" 
+                        value={data.points_per_voucher}
+                        onChange={handleInput}
+                        placeholder="Write Point per Voucher here..." 
+                        className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
+                </div>
+                {/* PRICE PER VOUCHER */}
+                <div className='w-[100%]'>
+                    <h6 className='pb-1 flex gap-1 items-end'>
+                        {/* Price per Voucher: */}
+                        Amount per Voucher: 
+                        <small className='text-blue-700'>
+                        (Enter the amount required to obtain a voucher.)
+                        </small>
+                    </h6>
+                    <input 
+                        type="number"
+                        min={1} 
+                        name="price_per_voucher" 
+                        onChange={handleInput}
+                        placeholder="Write Minimum Spend Amount here..." 
+                        className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
+                </div>
+             </div>
+            {/*  */}
+            
+        </section>
+
+         {/* CALCULATIONS */}
+         <section className='mx-auto w-[90%] lg:overflow-hidden overflow-auto py-[2rem] px-[1.5rem]  mb-[4rem] bg-white drop-shadow-lg'>
             {/* QUANTITY */}
             <div className='w-[100%] mb-[2rem] grid grid-cols-3 gap-6'>
                 <div className='w-[100%]'>
@@ -267,11 +305,9 @@ export default function CampaignManagedAdd({ priceData }) {
                     </p>
                 </div>
 
-            </div>
+            </div> 
         </section>
 
-
-      
 
         <div className="w-[100%] flex items-center justify-center gap-4 pb-[4rem]">
               <button 

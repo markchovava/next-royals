@@ -3,6 +3,7 @@
 import axiosClientAPI from '@/api/axiosClientAPI';
 import Loader from '@/app/components/Loader';
 import { tokenAuth } from '@/token/tokenAuth';
+import { formatDate } from '@/utils/stringManilupation';
 import axios from 'axios';
 import Link from 'next/link'
 import React, { useEffect, useLayoutEffect, useState } from 'react'
@@ -110,7 +111,7 @@ export default function CampaignList() {
               My Campaigns</h1>
               <hr className="border-t-4 border-black lg:w-[15%] w-[30%] pb-[3.5rem]" />
         </div>
-        <div className="w-[100%] pb-[2rem]">
+{/*         <div className="w-[100%] pb-[2rem]">
             <p className='w-[90%] mx-auto mb-2 text-3xl font-bold'> 
                 Hi <span className='text-[#6c0868]'>{user?.name ? user?.name : user?.email }</span></p>
             <p className="w-[90%] mx-auto leading-normal text-xl">
@@ -119,7 +120,7 @@ export default function CampaignList() {
               the step-by-step process to set up your campaign, define the rules, and determine the rewards 
               or incentives you wish to offer.
             </p>
-        </div>
+        </div> */}
  
          {/* SEARCH */}
          <div className='mx-auto w-[90%] flex lg:flex-row flex-col items-center justify-between gap-4 h-auto pb-[1.2rem]'>
@@ -137,7 +138,7 @@ export default function CampaignList() {
                       Search</button>
                 </div>
                 <div className='flex items-center justify-end gap-3'>
-                    <Link
+                    {/* <Link
                       href='/campaign-managed/add'
                       className='transition-all duration-150 ease-in rounded-lg px-7 py-4 bg-gradient-to-br from-blue-600 to-[#6c0868] text-white border hover:bg-gradient-to-br  hover:from-[#6c0868] hover:to-blue-600 hover:text-white '>
                       Create Campaign</Link>
@@ -150,7 +151,7 @@ export default function CampaignList() {
                     <Link
                       href='/voucher-redeem'
                       className='transition-all duration-150 ease-in rounded-lg px-7 py-4 bg-gradient-to-br from-[#6c0868] to-[#3d003a] text-white border hover:bg-gradient-to-br  hover:from-[#3d003a] hover:to-[#6c0868] hover:text-white '>
-                      Redeem Voucher</Link>
+                      Redeem Voucher</Link> */}
                 </div>
           </div>
 
@@ -176,9 +177,9 @@ export default function CampaignList() {
                     <div className="w-[20%] p-3 border-l border-slate-300">
                         {item?.user?.name ? item?.user?.name : item?.user?.email}
                     </div>
-                    <div className="w-[20%] p-3 border-l border-slate-300 flex items-center gap-1 justify-start">
-                        <span>{item.campaign_managed.start_date ? item.campaign_managed.start_date : '--/--/--'}</span> to 
-                        <span>{item.campaign_managed.end_date ? item.campaign_managed.end_date : '--/--/--'}</span>
+                    <div className="w-[20%] p-3 border-l border-slate-300 ">
+                        <span>{item.campaign_managed.start_date ? formatDate(item.campaign_managed.start_date) : '--/--/--'}</span> to 
+                        <span>{item.campaign_managed.end_date ? formatDate(item.campaign_managed.end_date) : '--/--/--'}</span>
                     </div>
                     <div className="w-[15%] p-3 border-l border-slate-300">{item.current_points} points</div>
                     <div className="w-[15%] p-3 border-l border-slate-300">{item.reward.target_points} points</div>

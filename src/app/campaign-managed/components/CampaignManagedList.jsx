@@ -10,12 +10,14 @@ import { FaEye } from "react-icons/fa";
 import { MdDeleteForever, MdEdit } from 'react-icons/md';
 import { TbProgress } from "react-icons/tb";
 import { toast } from "react-toastify";
-
+import { FaCalendarDay } from "react-icons/fa6";
+import { trimRightToChar } from "@/utils/stringManilupation";
 
 
 export default function CampaignManagedList() {
     const { getAuthToken } = tokenAuth();
     const [data, setData] = useState();
+    const  [user, setUser] = useState();
     const [nextURL, setNextURL] = useState()
     const [prevURL, setPrevURL] = useState()
     const [search, setSearch] = useState('');
@@ -73,6 +75,18 @@ export default function CampaignManagedList() {
           }   
     } 
 
+
+    async function getUser() {
+        try{
+          const result = await axiosClientAPI.get(`profile`, config)
+            .then((response) => {
+              setUser(response.data.data);
+            })
+          } catch (error) {
+            console.error(`Error: ${error}`)
+          }   
+    } 
+
     /* DELETE DATA */
     async function deleteData(id) {
       try{
@@ -91,11 +105,14 @@ export default function CampaignManagedList() {
       searchSubmit == true && searchData();
     }, [searchSubmit]); 
 
-    useEffect(() => { 
+    useEffect(() => {
+        getUser(); 
         getData();
     }, []);
 
     if(!data){ return ( <Loader />)}
+
+    console.log(data)
 
   return (
       
@@ -107,9 +124,20 @@ export default function CampaignManagedList() {
               <hr className="border-t-4 border-black w-[10%] pb-[3.5rem]" />
         </div> 
 
+        <div className="w-[100%] pb-[2rem]">
+            <p className='w-[90%] mx-auto mb-2 text-3xl font-bold'> 
+                <span className='text-[#6c0868]'>
+                  Hi {user?.email ? trimRightToChar(user?.email, '@') : ''}. </span>
+            </p>
+            <p className="w-[90%] mx-auto leading-normal text-xl">
+              Below are a list of the campaigns you've created or a manager of. 
+              Get started by clicking "Create Campaign" and providing all the required information.
+            </p>
+        </div>
+
           {/* SEARCH */}
-        <div className='mx-auto w-[90%] flex items-center justify-between h-auto pb-[1.2rem]'>
-              <div className='lg:w-[40%] w-[70%] flex items-center justify-start gap-2'>
+        <div className='mx-auto w-[90%] flex lg:flex-row flex-col items-center justify-between gap-4 h-auto pb-[1.2rem]'>
+              <div className='lg:w-[40%] w-[100%] flex items-center justify-start gap-2'>
                   <input 
                       type='text'
                       value={search}
@@ -123,12 +151,28 @@ export default function CampaignManagedList() {
                       {searchSubmit == true ? 'Processing' : 'Search'}
                     </button>
               </div>
-              <div>
+             
+                <div className='w-[100%] lg:w-auto flex items-center justify-end gap-3'>
                   <Link
-                    href='/admin/campaign-managed/add'
-                    className='bg__primary transition-all duration-150 ease-in rounded-xl px-7 py-4 text-white border bg__primary'>
-                    Add</Link>
+                    href='/campaign-managed/add'
+                    className='transition-all duration-150 ease-in rounded-lg px-7 py-4 bg-gradient-to-br from-blue-600 to-[#6c0868] text-white border hover:bg-gradient-to-br  hover:from-[#6c0868] hover:to-blue-600 hover:text-white '>
+                    Create Campaign</Link>
+                  
+                    <Link
+                      href='/voucher-issue'
+                      className='transition-all duration-150 ease-in rounded-lg px-7 py-4 bg-gradient-to-br from-green-700 to-blue-600 text-white border hover:bg-gradient-to-br  hover:from-blue-600 hover:to-green-700 hover:text-white '>
+                      Issue Voucher</Link>
+                  
+                  <Link
+                    href='/voucher-reward'
+                    className='transition-all duration-150 ease-in rounded-lg px-7 py-4 bg-gradient-to-br from-[#6c0868] to-[#570253] text-white border hover:bg-gradient-to-br hover:to-[#6c0868] hover:from-[#570253] hover:text-white '>
+                    Redeem Voucher</Link>
+                  <Link
+                    href='/voucher-reward'
+                    className='transition-all duration-150 ease-in rounded-lg px-7 py-4 bg-gradient-to-br from-orange-500 to-red-700 text-white border hover:bg-gradient-to-br  hover:from-red-700 hover:to-orange-600 hover:text-white '>
+                    Verify Reward</Link>
               </div>
+              
         </div>
 
         <section className="mx-auto w-[90%] lg:overflow-hidden overflow-auto">
@@ -138,7 +182,7 @@ export default function CampaignManagedList() {
                   <div className="w-[20%] p-3 border-l border-slate-300">COMPANY</div>
                   <div className="w-[15%] p-3 border-l border-slate-300">DURATION</div>
                   <div className="w-[15%] p-3 border-l border-slate-300">STATUS</div>
-                  <div className="w-[15%] p-3 border-l border-slate-300">AUTHOR</div>
+                  <div className="w-[15%] p-3 border-l border-slate-300">VOUCHERS</div>
                   <div className="w-[15%] p-3 border-l border-slate-300">ACTION</div>
             </div>
 
@@ -151,29 +195,30 @@ export default function CampaignManagedList() {
                         {item.company_name}
                       </div>
                       <div className="w-[15%] p-3 border-l border-slate-300">
-                        {item.start_date} - {item.end_date}
+                        {item.num_of_days ? item.num_of_days + ' days' : 'Not added.' }
                       </div>
                       <div className="w-[15%] p-3 border-l border-slate-300"> 
-                        <span className={`${item.status === 'Processing' && 'bg-green-700'}
-                          ${item.status === 'Active' && 'bg-pink-600'}
-                          ${item.status === 'Completed' && 'bg-blue-700'} text-white px-2 py-1 rounded-lg`}>
+                        <span className={` bg-blue-700 text-white px-2 py-1 rounded-lg`}>
                           {item.status}
                         </span>
                       </div>
                       <div className="w-[15%] p-3 border-l border-slate-300"> 
-                        {item.user?.name ? item.user?.name : item.user?.email}
+                        {item.quantity}
                       </div>
                       <div className="w-[15%] p-3 border-l border-slate-300 flex justify-start items-center gap-3 text-xl">
-                          <Link href={`/campaign-managed/${item.id}`}> 
+                          <Link title="View" href={`/campaign-managed/${item.id}`}> 
                               <FaEye className='hover:text-blue-500 duration-150 hover:scale-110 transition-all ease-in'/> 
                           </Link>
-                          <Link href={`/campaign-managed/edit/${item.id}`}> 
+                          <Link title="Edit" href={`/campaign-managed/edit/${item.id}`}> 
                               <MdEdit className='hover:text-green-500 duration-150 hover:scale-110 transition-all ease-in' /> 
                           </Link>
-                          <Link href={`/campaign-managed/status/${item.id}`}> 
-                              <TbProgress className='hover:text-green-500 duration-150 hover:scale-110 transition-all ease-in' /> 
+                          <Link title="Update Status" href={`/campaign-managed/status/${item.id}`}> 
+                              <TbProgress className='hover:text-gray-500 duration-150 hover:scale-110 transition-all ease-in' /> 
                           </Link>
-                          <button> 
+                          <Link title="Update Dates" href={`/campaign-managed/duration/${item.id}`}> 
+                              <FaCalendarDay className='hover:text-cyan-500 duration-150 hover:scale-110 transition-all ease-in' /> 
+                          </Link>
+                          <button title="Delete"> 
                               <MdDeleteForever 
                                 onClick={() => deleteData(item.id)}
                                 className='hover:text-red-500 duration-150 hover:scale-110 transition-all ease-in' /> 
