@@ -174,36 +174,7 @@ function NavAdminResponsive() {
                             </AnimatePresence> 
                         }
                     </li>
-                    {/* Voucher */}
-                    <li className="relative w-[100vw]"
-                        onClick={() => { setIsActive({six: !isActive.six}) }}>
-                        <span className={`w-[100vw] py-2 ${isActive.six && 'bg-[#6c0868]'} cursor-pointer flex items-center justify-center gap-1 hover:text-slate-100`}>
-                            Voucher <IoChevronDownSharp />
-                        </span>
-                        { isActive.six && 
-                            <AnimatePresence>
-                                <motion.ul 
-                                    initial={{ opacity:1 }}
-                                    animate={{ opacity:1 }}
-                                    exit={{ opacity:1 }}
-                                    transition={{ duration: 0.6, type:'spring' }}
-                                    className="flex flex-col items-center justify-center w-[100vw] bg-[#570253] relative">
-                                    <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
-                                        <Link href='/admin/redeem-voucher' className="text-center flex items-center justify-center w-[100%]">
-                                        Redeem Voucher</Link>
-                                    </li>
-                                    <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
-                                        <Link href='/admin/voucher-issue' className="text-center flex items-center justify-center w-[100%]">
-                                        Issue Voucher</Link>
-                                    </li>   
-                                    <li className="px-[0.5rem] py-2 w-[100%] hover:bg-[#6c0868]">
-                                        <Link href='/admin/voucher-reward' className="text-center flex items-center justify-center w-[100%]">
-                                        Verify Reward</Link>
-                                    </li>   
-                                </motion.ul>
-                            </AnimatePresence> 
-                        }
-                    </li>
+                   
                 </ul>
             {/* Profile */}
             <div className='py-2'>
