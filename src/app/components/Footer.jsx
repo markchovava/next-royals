@@ -47,35 +47,19 @@ export default function Footer({ appInfoData }) {
                             About Us</Link>
                     </li>
                     <li>
-                        <Link href='/about' className="group flex items-center justify-start gap-2">
+                        <Link href='/contact' className="group flex items-center justify-start gap-2">
                             <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
-                            Campaigns
+                            Contact Us
                         </Link>
                     </li>
                     <li>
-                        <Link href='/about' className="group flex items-center justify-start gap-2">
+                        <Link href='/voucher-reward' className="group flex items-center justify-start gap-2">
                             <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
-                            Rewards
+                            Verify Reward
                         </Link>
                     </li>
-                    <li> 
-                        <Link href='/project' className="group flex items-center justify-start gap-2">
-                            <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
-                            My Account</Link>
-                    </li>
-                    <li> 
-                        <Link href='/contact' className="group flex items-center justify-start gap-2">
-                            <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
-                            Contact Us</Link>
-                    </li>
                    
-                        <>
-                            <li> 
-                                <Link href='/register' className="group flex items-center justify-start gap-2">
-                                    <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
-                                    Register</Link></li>
-                         
-                        </>
+                   
                     
                 </ul>
             </div>
