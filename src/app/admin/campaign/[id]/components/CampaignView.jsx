@@ -54,67 +54,67 @@ export default function CampaignView({ id }) {
                 Campaigns</Link>
         </div>
         {/*  */}
-        <section className='mx-auto w-[90%] pb-[4rem]'>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Campaign Name:</label>
-                <div className='w-[80%] font-semibold'>
+        <section className='mx-auto lg:w-[90%] w-[80%] pb-[4rem]'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='lg:w-[20%] gap-3'>Campaign Name:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.campaign_managed.name} 
                 </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Campaign Duration:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='lg:w-[20%] gap-3'>Campaign Duration:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     <span className='mr-2'>{formatDate(data.campaign_managed.start_date)}</span> to
                     <span className='ml-2'>{formatDate(data.campaign_managed.end_date)}</span>
                 </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Company Name:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='lg:w-[20%] gap-3'>Company Name:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.campaign_managed?.company_name} 
                 </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Status:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='lg:w-[20%] gap-3'>Status:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.campaign_managed?.status}
                 </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Current Points:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='lg:w-[20%] gap-3'>Current Points:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     <span className='bg-red-600 px-2 py-1 text-white rounded-xl'>
                         {data.current_points}</span> 
                 </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Current Quantity:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='lg:w-[20%] gap-3'>Current Quantity:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.current_quantity} </div>
             </div>
             {/* REWARD */}
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Reward Name:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='lg:w-[20%] gap-3'>Reward Name:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.reward?.name}
                 </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Reward Points:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='lg:w-[20%] gap-3 '>Reward Points:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     {data?.reward?.target_points}
                 </div>
             </div>
 
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Points per Voucher:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='lg:w-[20%] gap-3'>Points per Voucher:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.reward?.points_per_voucher}
                 </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Price per Voucher:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='lg:w-[20%] gap-3'>Price per Voucher:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     { data.reward?.price_per_voucher 
                     ? '$' + (data.reward?.price_per_voucher / 100).toFixed(2) 
                     : '$' + (0).toFixed(2) }

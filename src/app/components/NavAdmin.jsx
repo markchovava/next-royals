@@ -163,7 +163,8 @@ export default function NavAdmin() {
                                             Add Managed Campaign</Link>
                                         </li>
                                         <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
-                                            <Link href='/admin/campaign-managed' className=" w-[100%]">Managed Campaign List</Link>
+                                            <Link href='/admin/campaign-managed' className=" w-[100%]">
+                                            Managed Campaign List</Link>
                                         </li>    
                                       
                                     </motion.ul>

@@ -6,7 +6,7 @@ import { tokenAuth } from '@/token/tokenAuth';
 import { darkBounce } from '@/utils/toastify';
 import axios from 'axios';
 import Link from 'next/link'
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { BsArrowRight } from 'react-icons/bs';
 import { toast } from 'react-toastify';
@@ -26,6 +26,10 @@ export default function DurationEdit({ id }) {
           'Authorization': `Bearer ${getAuthToken()}`
         }
     };
+
+    if(!getAuthToken()){
+        redirect('/login')
+    }
     const handleInput = (e) => {
         setData({...data, [e.target.name]: e.target.value })
     }

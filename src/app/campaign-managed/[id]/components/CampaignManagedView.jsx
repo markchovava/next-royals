@@ -7,6 +7,7 @@ import { formatDate } from '@/utils/stringManilupation';
 import { darkBounce } from '@/utils/toastify';
 import axios from 'axios';
 import Link from 'next/link'
+import { redirect } from 'next/navigation';
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { BsArrowRight, BsChevronRight } from 'react-icons/bs';
 import { CiSquareRemove } from "react-icons/ci";
@@ -28,6 +29,10 @@ export default function CampaignManagedView({ id }) {
           'Authorization': `Bearer ${getAuthToken()}`
         }
     };
+
+    if(!getAuthToken()){
+        redirect('/login')
+    }
 
     async function generateVouchers() {
         const formData = {

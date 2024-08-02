@@ -8,6 +8,7 @@ import axiosClientAPI from '@/api/axiosClientAPI';
 import { useRouter } from 'next/navigation';
 import { tokenAuth } from '@/token/tokenAuth';
 import { tokenRole } from '@/token/tokenRole';
+import Image from 'next/image';
 
 
 export default function NavMain() {
@@ -47,7 +48,10 @@ export default function NavMain() {
         <div className='mx-auto w-[90%] flex lg:flex-row flex-col items-center justify-between'>
             <div className="lg:w-[15%] w-[100%] h-auto py-[1rem]">
                 <Link href={`/`}>
-                <h1 className="leading-none font-black lg:text-6xl text-4xl py-3">Royals</h1>
+                <div className='flex items-center justify-center lg:justify-start gap-1'>
+                    <Image width={120} height={100} src='/assets/img/logo.png' />
+                    <h1 className="leading-none font-black lg:text-6xl text-4xl py-3">Royals</h1>
+                </div>
                 </Link>
             </div>
             <ul className="hidden lg:flex lg:flex-row flex-col items-center justify-start gap-4 font-semibold tracking-wider">

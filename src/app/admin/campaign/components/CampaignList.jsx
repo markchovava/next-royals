@@ -117,7 +117,7 @@ export default function CampaignList() {
 
             <section className="mx-auto w-[90%] lg:overflow-hidden overflow-auto">
                 {/* ROW */}
-                <div className="w-[50rem] lg:w-[100%] font-bold flex items-center justify-start bg-slate-100 py-3 border border-slate-200 ">
+                <div className="w-[70rem] lg:w-[100%] font-bold flex items-center justify-start bg-slate-100 py-3 border border-slate-200 ">
                     <div className="w-[20%] p-3 border-l border-slate-300">CAMPAIGN NAME</div>
                     <div className="w-[20%] p-3 border-l">USER NAME</div>
                     <div className="w-[20%] p-3 border-l border-slate-300">DURATION</div>
@@ -130,7 +130,7 @@ export default function CampaignList() {
                     {/* ROW */}
                     {data?.length > 0 ?
                         data?.map((item, i) => (
-                        <div key={i} className="w-[50rem] lg:w-[100%] flex items-center justify-start py-3 border-b border-slate-300">
+                        <div key={i} className="w-[70rem] lg:w-[100%] flex items-center justify-start py-3 border-b border-slate-300">
                             <div className="w-[20%] p-3">
                             {item?.campaign_managed?.name}
                             </div>

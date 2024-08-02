@@ -37,10 +37,10 @@ export default function VoucherQRCode({ qrCodeData }) {
       <div className="qrcode__container">
         <div className="qrcode__container--parent">
             <div className="qrcode__download">
-              <div className="w-[80%] p-[2.5rem] bg-white" ref={qrCodeRef}>
-                <QRCode value={url} size={500} />
+              <div className="w-[300px] p-[25px] bg-white" ref={qrCodeRef}>
+                <QRCode value={url} size={250} />
               </div>
-            <button className="mx-[2.5rem] bg-slate-700 hover:bg-slate-800 drop-shadow-lg px-[1.2rem] py-[0.8rem] text-white rounded-xl" onClick={downloadQRCode}>Download QR Code</button>
+            <button className="mx-[25px] bg-slate-700 hover:bg-slate-800 drop-shadow-lg px-[1.2rem] py-[0.8rem] text-white rounded-xl" onClick={downloadQRCode}>Download QR Code</button>
             </div>
           
         </div>

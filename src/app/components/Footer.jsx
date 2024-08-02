@@ -8,6 +8,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa";
 import { useState } from "react";
 import FooterSticker from "./FooterSticker";
+import Image from "next/image";
 
 
 
@@ -24,8 +25,12 @@ export default function Footer({ appInfoData }) {
     <section className="w-[100%] h-auto bg-gradient-to-br from-[#6c0868] to-[#570253] text-white">
         <div className="w-[90%] mx-auto py-[4rem] flex lg:flex-row flex-col lg:gap-1 gap-4 items-start justify-between">
             <div className="lg:w-[40%] w-[100%] h-auto flex items-start justify-center flex-col gap-4">
-                {/* <img src=''className="object-fill" alt="" /> */}
-                <h1 className="leading-none font-black text-6xl py-3">Royals</h1>
+                <Link href={`/`}>
+                    <div className='flex items-center justify-center lg:justify-start gap-1'>
+                        <Image width={120} height={100} src='/assets/img/logo.png' />
+                        <h1 className="leading-none font-black lg:text-6xl text-4xl py-3">Royals</h1>
+                    </div>
+                </Link>
                 <ul className='flex items-center justify-start gap-3 text-2xl'>
                     <li><Link href='#' ><FaFacebook className="hover:scale-110 transition-all ease-in-out" /></Link></li>
                     <li><Link href='#'><FaSquareXTwitter className="hover:scale-110 transition-all ease-in-out" /></Link></li>

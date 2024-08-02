@@ -40,7 +40,7 @@ export default function UserView() {
   return (
        
     <section className='w-[100%] h-auto pb-[4rem]'>
-       <div className='w-[90%] mx-auto lg:flex justify-start items-start gap-8'>
+       <div className='lg:w-[90%] w-[80%] mx-auto lg:flex justify-start items-start gap-8'>
             <div className='lg:w-[100%]'>
                 <div className='flex justify-between items-center pb-[1rem]'>
                     <div className='font-light text-[2rem] pb-4'>View User</div>
@@ -48,39 +48,38 @@ export default function UserView() {
                         Edit Profile</Link>
                 </div>
                
-                <div className='flex items-center justify-start gap-3 pb-6'>
-                    <div className='w-[20%]'>Full Name: </div>
-                    <div className='w-[80%] font-semibold flex justify-start items-center gap-1'> 
+                <div className='w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start'>
+                    <div className='lg:w-[20%]'>Full Name: </div>
+                    <div className='lg:w-[80%] font-semibold flex justify-start items-center gap-1'> 
                         <span>{data.name ? data.name : 'Not added.'}</span>
-                        
                     </div>
                 </div>
               
-                <div className='flex items-center justify-start gap-3 pb-6'>
-                    <div className='w-[20%]'>Role: </div>
-                    <div className='w-[80%] font-semibold'>
+                <div className='w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start'>
+                    <div className='lg:w-[20%]'>Role: </div>
+                    <div className='lg:w-[80%] font-semibold'>
                         {data?.role?.name ? data?.role?.name : 'Not defined yet.'}
                     </div>
                 </div>
-                <div className='flex items-center justify-start gap-3 pb-6'>
-                    <div className='w-[20%]'>Phone Number: </div>
-                    <div className='w-[80%] font-semibold'>{data.phone}</div>
+                <div className='w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start'>
+                    <div className='lg:w-[20%]'>Phone Number: </div>
+                    <div className='lg:w-[80%] font-semibold'>{data.phone}</div>
                 </div>
                
-                <div className='flex items-center justify-start gap-3 pb-6'>
-                    <div className='w-[20%]'>Email: </div>
-                    <div className='w-[80%] font-semibold'>
+                <div className='w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start'>
+                    <div className='lg:w-[20%]'>Email: </div>
+                    <div className='lg:w-[80%] font-semibold'>
                         {data.email}
                     </div>
                 </div>
-                <div className='flex items-center justify-start gap-3 pb-6'>
-                    <div className='w-[20%]'>Address: </div>
-                    <div className='w-[80%] font-semibold'>{data.address}</div>
+                <div className='w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start'>
+                    <div className='lg:w-[20%]'>Address: </div>
+                    <div className='lg:w-[80%] font-semibold'>{data.address}</div>
                 </div>
                 
-                <div className='flex items-center justify-start gap-3 pb-6'>
-                    <div className='w-[20%]'>Code: </div>
-                    <div className='w-[80%] font-semibold'>
+                <div className='w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start'>
+                    <div className='lg:w-[20%]'>Code: </div>
+                    <div className='lg:w-[80%] font-semibold'>
                         {data.code}
                     </div>
                 </div>

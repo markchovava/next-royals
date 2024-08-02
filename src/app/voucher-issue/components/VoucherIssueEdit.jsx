@@ -12,6 +12,7 @@ import { Bounce, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import VoucherQRCode from "./VoucherQRCode";
 import { IoClose } from "react-icons/io5";
+import { redirect } from "next/navigation";
 
 
 
@@ -29,6 +30,10 @@ export default function VoucherIssueEdit() {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${getAuthToken()}`
     }}
+
+    if(!getAuthToken()){
+        redirect('/login')
+    }
 
     const handleInput = (e) => {
         setData({...data, [e.target.name]: e.target.value})
@@ -209,21 +214,21 @@ export default function VoucherIssueEdit() {
                             <IoClose onClick={() => setVoucher() } className="text-lg text-red-600" />
                         </button>
                     </div>
-                    <div className="flex items-center justify-start gap-3 mb-[1.5rem]">
-                        <div className="w-[25%]">QR Code:</div>
-                        <div className="w-[25%] font-semibold">
+                    <div className="flex lg:flex-row flex-col lg:items-center justify-start gap-3 mb-[1.5rem]">
+                        <div className="lg:w-[25%]">QR Code:</div>
+                        <div className="lg:w-[75%] font-semibold">
                             <span className="px-[2.5rem]"> {voucher.code} </span>
                         </div>
                     </div>
-                    <div className="flex items-center justify-start gap-3 mb-[1.5rem]">
-                        <div className="w-[25%]">QR Image:</div>
-                        <div className="w-[75%]">
+                    <div className="flex lg:flex-row flex-col lg:items-center justify-start gap-3 mb-[1.5rem]">
+                        <div className="lg:w-[25%]">QR Image:</div>
+                        <div className="lg:w-[75%]">
                             <VoucherQRCode qrCodeData={voucher.code} />
                         </div>
                     </div>
-                    <div className="flex items-center justify-start gap-3 mb-[1.5rem]">
-                        <div className="w-[25%]">QR Points:</div>
-                        <div className="w-[75%] font-semibold ">
+                    <div className="flex lg:flex-row flex-col lg:items-center justify-start gap-3 mb-[1.5rem]">
+                        <div className="lg:w-[25%]">QR Points:</div>
+                        <div className="lg:w-[75%] font-semibold ">
                             <span className="px-[2.5rem]"> {voucher.points} </span>
                         </div>
                     </div>

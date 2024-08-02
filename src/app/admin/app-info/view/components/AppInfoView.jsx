@@ -58,44 +58,44 @@ export default function AppInfoView() {
         }
         {/*  */}
         <section className='mx-auto w-[90%] pb-[4rem]'>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3 font-semibold'>Name:</label>
-                <div className='w-[80%]'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Name:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.name} </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3 font-semibold'>Email:</label>
-                <div className='w-[80%]'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Email:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.email} </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3 font-semibold'>Phone:</label>
-                <div className='w-[80%]'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Phone:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.phone} </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3 font-semibold'>Address:</label>
-                <div className='w-[80%]'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Address:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.address} </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3 font-semibold'>Website:</label>
-                <div className='w-[80%]'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Website:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.website} </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3 font-semibold'>WhatsApp:</label>
-                <div className='w-[80%]'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3 '>WhatsApp:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.whatsapp} </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3 font-semibold'>Facebook:</label>
-                <div className='w-[80%]'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Facebook:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.facebook} </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3 font-semibold'>Description:</label>
-                <div className='w-[80%]'>
+            <div className="w-[100%] mb-[2rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Description:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.description} </div>
             </div>
             

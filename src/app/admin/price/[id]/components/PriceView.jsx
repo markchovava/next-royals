@@ -53,42 +53,42 @@ export default function PriceView({ id }) {
         </div>
         {/*  */}
         <section className='mx-auto w-[90%] pb-[4rem]'>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Name:</label>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='w-[20%] gap-3'>Name:</p>
                 <div className='w-[80%] font-semibold'>
                     {data.name} </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Slug:</label>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='w-[20%] gap-3'>Slug:</p>
                 <div className='w-[80%] font-semibold'>
                     {data.slug} </div>
             </div>
             {/* PRIORITY */}
             {data.priority &&
-              <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                  <label className='w-[20%] gap-3'>Priority:</label>
+              <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                  <p className='lg:w-[20%] gap-3'>Priority:</p>
                   <div className='w-[80%] font-semibold'>
                     <span className="bg-green-800 text-white p-1 px-2">{data?.priority}</span> 
                   </div>
               </div>
             }
             {/* QUANTITY */}
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Quantity:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='lg:w-[20%] gap-3'>Quantity:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.quantity} 
                 </div>
             </div>
             {/* AMOUNT */}
             <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Amount:</label>
-                <div className='w-[80%] font-semibold'>
+                <p className='lg:w-[20%] gap-3'>Amount:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.amount ? '$' + (data.amount / 100).toFixed(2) : '$' + (0).toFixed(2) } 
                 </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Author:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='lg:w-[20%] gap-3'>Author:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     {data?.user?.name ? data?.user?.name : data?.user?.email} </div>
             </div>
            

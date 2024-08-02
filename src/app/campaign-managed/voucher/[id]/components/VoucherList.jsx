@@ -6,6 +6,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import CsvDownloader from 'react-csv-downloader';
+import { redirect } from 'next/navigation';
 
 
 
@@ -23,6 +24,10 @@ export default function VoucherList({ id }) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${getAuthToken()}`
     }}
+
+    if(!getAuthToken()){
+        redirect('/login')
+    }
 
     const columns = [
         {id: 'first', displayName: 'CODE'}, 

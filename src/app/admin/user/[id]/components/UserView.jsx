@@ -52,35 +52,35 @@ export default function UserView({ id }) {
                 Edit</Link>
         </div>
         {/*  */}
-        <section className='mx-auto w-[90%] pb-[4rem]'>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Name:</label>
-                <div className='w-[80%] font-semibold'>
+        <section className='mx-auto lg:w-[90%] w-[80%] pb-[4rem]'>
+            <div className="w-[100%] mb-[1.8rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='lg:w-[20%] gap-3'>Name:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.name} </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Email:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.8rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='lg:w-[20%] gap-3'>Email:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.email} </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Address:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.8rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='lg:w-[20%] gap-3'>Address:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.address} </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Phone:</label>
+            <div className="w-[100%] mb-[1.8rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='w-[20%] gap-3'>Phone:</p>
                 <div className='w-[80%] font-semibold'>
                     {data.phone} </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Code:</label>
+            <div className="w-[100%] mb-[1.8rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='w-[20%] gap-3'>Code:</p>
                 <div className='w-[80%] font-semibold'>
                     {data.code} </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Role:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.8rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <p className='lg;w-[20%] gap-3'>Role:</p>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.role?.name}
                 </div>
             </div>

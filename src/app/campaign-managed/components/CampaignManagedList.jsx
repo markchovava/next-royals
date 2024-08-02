@@ -12,6 +12,7 @@ import { TbProgress } from "react-icons/tb";
 import { toast } from "react-toastify";
 import { FaCalendarDay } from "react-icons/fa6";
 import { trimRightToChar } from "@/utils/stringManilupation";
+import { redirect } from "next/navigation";
 
 
 export default function CampaignManagedList() {
@@ -27,6 +28,10 @@ export default function CampaignManagedList() {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${getAuthToken()}`
     }}
+
+    if(!getAuthToken()){
+      redirect('/login')
+  }
 
     /* PAGINATION */
     async function paginationHandler(url) {
@@ -152,24 +157,22 @@ export default function CampaignManagedList() {
                     </button>
               </div>
              
-                <div className='w-[100%] lg:w-auto flex items-center justify-end gap-3'>
+              <div className='lg:w-[60%] w-[100%] grid lg:grid-cols-4 grid-cols-2 gap-3'>
                   <Link
                     href='/campaign-managed/add'
-                    className='transition-all duration-150 ease-in rounded-lg px-7 py-4 bg-gradient-to-br from-blue-600 to-[#6c0868] text-white border hover:bg-gradient-to-br  hover:from-[#6c0868] hover:to-blue-600 hover:text-white '>
+                    className='text-center transition-all duration-150 ease-in rounded-lg px-5 py-4 bg-gradient-to-br from-blue-600 to-[#6c0868] text-white border hover:bg-gradient-to-br  hover:from-[#6c0868] hover:to-blue-600 hover:text-white '>
                     Create Campaign</Link>
-                  
-                    <Link
-                      href='/voucher-issue'
-                      className='transition-all duration-150 ease-in rounded-lg px-7 py-4 bg-gradient-to-br from-green-700 to-blue-600 text-white border hover:bg-gradient-to-br  hover:from-blue-600 hover:to-green-700 hover:text-white '>
-                      Issue Voucher</Link>
-                  
+                  <Link
+                    href='/voucher-issue'
+                    className='text-center transition-all duration-150 ease-in rounded-lg px-5 py-4 bg-gradient-to-br from-green-700 to-blue-600 text-white border hover:bg-gradient-to-br  hover:from-blue-600 hover:to-green-700 hover:text-white '>
+                    Issue Voucher</Link>
                   <Link
                     href='/voucher-reward'
-                    className='transition-all duration-150 ease-in rounded-lg px-7 py-4 bg-gradient-to-br from-[#6c0868] to-[#570253] text-white border hover:bg-gradient-to-br hover:to-[#6c0868] hover:from-[#570253] hover:text-white '>
+                    className='text-center transition-all duration-150 ease-in rounded-lg px-5 py-4 bg-gradient-to-br from-[#6c0868] to-[#570253] text-white border hover:bg-gradient-to-br hover:to-[#6c0868] hover:from-[#570253] hover:text-white '>
                     Redeem Voucher</Link>
                   <Link
                     href='/voucher-reward'
-                    className='transition-all duration-150 ease-in rounded-lg px-7 py-4 bg-gradient-to-br from-orange-500 to-red-700 text-white border hover:bg-gradient-to-br  hover:from-red-700 hover:to-orange-600 hover:text-white '>
+                    className='text-center transition-all duration-150 ease-in rounded-lg px-5 py-4 bg-gradient-to-br from-orange-500 to-red-700 text-white border hover:bg-gradient-to-br  hover:from-red-700 hover:to-orange-600 hover:text-white '>
                     Verify Reward</Link>
               </div>
               
@@ -177,7 +180,7 @@ export default function CampaignManagedList() {
 
         <section className="mx-auto w-[90%] lg:overflow-hidden overflow-auto">
             {/* ROW */}
-            <div className="w-[50rem] lg:w-[100%] font-bold flex items-center justify-start bg-slate-100 py-2 border border-slate-200 ">
+            <div className="w-[70rem] lg:w-[100%] font-bold flex items-center justify-start bg-slate-100 py-2 border border-slate-200 ">
                   <div className="w-[20%] p-3 ">NAME</div>
                   <div className="w-[20%] p-3 border-l border-slate-300">COMPANY</div>
                   <div className="w-[15%] p-3 border-l border-slate-300">DURATION</div>
@@ -188,7 +191,7 @@ export default function CampaignManagedList() {
 
             { data.length > 0 ?
               data.map((item, i) => (
-                <div key={i} className="w-[50rem] lg:w-[100%] flex items-center justify-start
+                <div key={i} className="w-[70rem] lg:w-[100%] flex items-center justify-start
                  border border-slate-200 ">
                       <div className="w-[20%] p-3 ">{item.name}</div>
                       <div className="w-[20%] p-3 border-l border-slate-300">
