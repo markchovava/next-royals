@@ -58,9 +58,6 @@ export default function Footer({ appInfoData }) {
                             Verify Reward
                         </Link>
                     </li>
-                   
-                   
-                    
                 </ul>
             </div>
             <div className="lg:w-[30%] w-[100%]">
