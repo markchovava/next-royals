@@ -167,7 +167,7 @@ export default function CampaignManagedList() {
                     className='text-center transition-all duration-150 ease-in rounded-lg px-5 py-4 bg-gradient-to-br from-green-700 to-blue-600 text-white border hover:bg-gradient-to-br  hover:from-blue-600 hover:to-green-700 hover:text-white '>
                     Issue Voucher</Link>
                   <Link
-                    href='/voucher-reward'
+                    href='/voucher-redeem'
                     className='text-center transition-all duration-150 ease-in rounded-lg px-5 py-4 bg-gradient-to-br from-[#6c0868] to-[#570253] text-white border hover:bg-gradient-to-br hover:to-[#6c0868] hover:from-[#570253] hover:text-white '>
                     Redeem Voucher</Link>
                   <Link
@@ -206,7 +206,8 @@ export default function CampaignManagedList() {
                         </span>
                       </div>
                       <div className="w-[15%] p-3 border-l border-slate-300"> 
-                        {item.quantity}
+                        {item.quantity_remaining ? item.quantity_remaining + ' of ' : ''}
+                        {item.quantity ? item.quantity : 'Not added.'}
                       </div>
                       <div className="w-[15%] p-3 border-l border-slate-300 flex justify-start items-center gap-3 text-xl">
                           <Link title="View" href={`/campaign-managed/${item.id}`}> 

@@ -156,33 +156,33 @@ export default function CampaignManagedView({ id }) {
             <div className="w-[100%] mb-[2rem] text-5xl font-light flex items-center justify-start">
                 Company Info
             </div>
-            <div className="w-[100%] mb-[1.6rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Company Name:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Company Name:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.company_name}
                 </div>
             </div>
-            <div className="w-[100%] mb-[1.6rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Company Address:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Company Address:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.company_address}
                 </div>
             </div>
-            <div className="w-[100%] mb-[1.6rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Company Phone:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Company Phone:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.company_phone}
                 </div>
             </div>
-            <div className="w-[100%] mb-[1.6rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Company Email:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Company Email:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.company_email}
                 </div>
             </div>
-            <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Company Website:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Company Website:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.company_website}
                 </div>
             </div>
@@ -191,64 +191,64 @@ export default function CampaignManagedView({ id }) {
                 Campaign Info
             </div>
             {/* STATUS */}
-            <div className="w-[100%] mb-[1.6rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Status:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Status:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     <span className={` bg-blue-700 text-white px-2 py-1 rounded-lg`}>
                         {data.status}
                     </span> </div>
             </div>
             {/* NAME */}
-            <div className="w-[100%] mb-[1.6rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Name:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%]'>Name:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.name} </div>
             </div>
             {/* DESCRIPTION */}
-            <div className="w-[100%] mb-[1.6rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Description:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Description:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.description} </div>
             </div>
-            <div className="w-[100%] mb-[1.6rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Duration:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Duration:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.num_of_days ? data.num_of_days + ' days' : 'Not added.' }
                 </div>
             </div>
-            <div className="w-[100%] mb-[1.6rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Start Date:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Start Date:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.start_date ? formatDate(data.start_date) : 'Not added.' }
                 </div>
             </div>
-            <div className="w-[100%] mb-[1.6rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>End Date:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>End Date:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.end_date ? formatDate(data.end_date)  : 'Not added.' }
                 </div>
             </div>
-            <div className="w-[100%] mb-[1.6rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Points per Voucher:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Points per Voucher:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.reward?.points_per_voucher ? data.reward?.points_per_voucher : 'Not added.' }
                 </div>
             </div>
-            <div className="w-[100%] mb-[1.6rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Price of Voucher:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Price of Voucher:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.reward?.price_per_voucher ? '$' + (data.reward.price_per_voucher / 100).toFixed(2) : 'Not added.'}
                 </div>
             </div>
-            <div className="w-[100%] mb-[1.6rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Number of Vouchers:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Number of Vouchers:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data.quantity ? data.quantity : 'Not added'}
                 </div>
             </div>
-            <div className="w-[100%] mb-[1.6rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Total Cost:</label>
-                <div className='w-[80%] font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Total Cost:</label>
+                <div className='lg:w-[80%] font-semibold'>
                     {data?.total ? '$' + (data?.total / 100).toFixed(2) : 'Not added.'}
                 </div>
             </div>
@@ -256,15 +256,15 @@ export default function CampaignManagedView({ id }) {
             <div className="w-[100%] mb-[2rem] text-5xl font-light flex items-center justify-start">
                 Reward Info
             </div>
-            <div className="w-[100%] mb-[1.6rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Reward Name:</label>
-                <div className='w-[80%] text-purple-900 font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Reward Name:</label>
+                <div className='lg:w-[80%] text-purple-900 font-semibold'>
                     {data.reward?.name ? data.reward?.name : 'Not added.'}
                 </div>
             </div>
-            <div className="w-[100%] mb-[1.6rem] flex items-center justify-start">
-                <label className='w-[20%] gap-3'>Target Points:</label>
-                <div className='w-[80%] text-blue-900 font-semibold'>
+            <div className="w-[100%] mb-[1.6rem] flex lg:flex-row flex-col lg:items-center justify-start">
+                <label className='lg:w-[20%] gap-3'>Target Points:</label>
+                <div className='lg:w-[80%] text-blue-900 font-semibold'>
                     {data.reward?.target_points ? data.reward?.target_points : 'Not added.'}
                 </div>
             </div>

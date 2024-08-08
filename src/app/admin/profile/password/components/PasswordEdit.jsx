@@ -2,6 +2,7 @@
 
 import axiosClientAPI from '@/api/axiosClientAPI';
 import { tokenAuth } from '@/token/tokenAuth';
+import { darkBounce } from '@/utils/toastify';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { BsArrowRight } from "react-icons/bs";
@@ -33,34 +34,14 @@ export default function PasswordEdit() {
         setIsSubmit(false);
         const message = 'Password is required.';
         setErrMsg({password: message})
-        toast.warn(message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            transition: Bounce,
-        });
+        toast.warn(message, darkBounce);
         return;
     }
     if(!data.password_confirmation){
         setIsSubmit(false);
         const message = 'Password Confirmation is required.';
         setErrMsg({password_confirmation: message})
-        toast.warn(message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            transition: Bounce,
-        });
+        toast.warn(message, darkBounce);
         return;
     }
 
@@ -68,17 +49,7 @@ export default function PasswordEdit() {
         setIsSubmit(false);
         const message = 'Password do not match.';
         setErrMsg({password_confirmation: message})
-        toast.warn(message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            transition: Bounce,
-        });
+        toast.warn(message, darkBounce);
         return;
     }
 
@@ -92,34 +63,14 @@ export default function PasswordEdit() {
             if(response.data.status == 0){
                 const message = response.data.message;
                 setErrMsg({...errMsg, password_confirmation: message});
-                toast.warn(message, {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                    transition: Bounce,
-                });
+                toast.warn(message, darkBounce);
                 setIsSubmit(false);
                 return;
             }
             if(response.data.status == 1){
                 const message = response.data.message;
                 setErrMsg({});
-                toast.success(message, {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                    transition: Bounce,
-                });
+                toast.success(message, darkBounce);
                 setIsSubmit(false);
                 router.push(`/admin/profile/view`)
                 return;
@@ -179,7 +130,7 @@ export default function PasswordEdit() {
             <div className="w-[100%] mb-[2rem] flex items-center justify-center gap-4">
                 <button
                   onClick={() => setIsSubmit(true)}
-                  className='w-[20%] group transition ease-in-out duration-200  flex items-center justify-center gap-1 rounded-xl py-[1.3rem] px-[2rem] bg-[#6c0868] text-white border hover:bg-gradient-to-br hover:from-[#6c0868] hover:to-purple-900'>
+                  className='px-[3rem] py-[1.3rem] group transition ease-in-out duration-200  flex items-center justify-center gap-1 rounded-xl bg-[#6c0868] text-white border hover:bg-gradient-to-br hover:from-[#6c0868] hover:to-purple-900'>
                   {isSubmit == true ? 
                     'Processing' :
                       <>

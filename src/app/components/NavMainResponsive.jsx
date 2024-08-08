@@ -88,20 +88,27 @@ export default function NavMainResponsive() {
                                 exit={{ opacity:1 }}
                                 transition={{ duration: 0.6, type:'spring' }}
                                 className="relative w-[100wv] bg-[#570253]">
-                                {getAuthToken() &&
-                                    <li className="w-[100%] text-center pb-3 pt-1 hover:bg-[#6c0868]">
-                                        <Link href='/campaign-program' className=" w-[100%] h-[100%]">MY CAMPAIGNS</Link>
-                                    </li>
-                                }
                                 <li className="w-[100%] text-center px-[0.5rem] py-1 hover:bg-[#6c0868]">
-                                    <Link href='/campaign' className=" w-[100%] h-[100%]">
+                                    <Link href='/campaign-all' className=" w-[100%] h-[100%]">
                                         ALL CAMPAIGNS</Link>
                                 </li>
+                                {getAuthToken() &&
+                                  <>
+                                    <li className="w-[100%] text-center pb-3 pt-1 hover:bg-[#6c0868]">
+                                        <Link href='/campaign' className=" w-[100%] h-[100%]">
+                                          MY CAMPAIGNS</Link>
+                                    </li>
+                                    <li className="w-[100%] text-center pb-3 pt-1 hover:bg-[#6c0868]">
+                                        <Link href='/campaign-managed' className=" w-[100%] h-[100%]">
+                                          MANAGED CAMPAIGNS</Link>
+                                    </li>
+                                  </>
+                                }
                                 <li className="w-[100%] text-center px-[0.5rem] py-1 hover:bg-[#6c0868]">
                                     <Link href='/voucher-redeem' className=" w-[100%]">REDEEM VOUCHERS</Link>
                                 </li>
                                 <li className="w-[100%] text-center px-[0.5rem] py-1 hover:bg-[#6c0868]">
-                                    <Link href='/voucher-reward' className=" w-[100%]">REDEEM REWARD</Link>
+                                    <Link href='/voucher-reward' className=" w-[100%]">VERIFY REWARD</Link>
                                 </li>
                                
                                 
@@ -119,7 +126,7 @@ export default function NavMainResponsive() {
                   <button 
                     onClick={() => setIsLogout(true)} 
                     className='border border-white py-[0.8rem] px-[1.8rem] rounded-lg transition-all ease-linear hover:bg-white hover:text-[#50014c]'>
-                    Login
+                    Logout
                   </button>
                 </li>
               :

@@ -85,6 +85,13 @@ export default function VoucherIssueEdit() {
                     setIsSubmit(false);
                     return;
                 }
+                if(response.data.status == 0){
+                    const message = response.data.message;
+                    toast.warn(message, darkBounce);
+                    setErrMsg({message: message});
+                    setIsSubmit(false);
+                    return;
+                }
             })
         } catch (error) {
             console.error(`Error: ${error}`);
