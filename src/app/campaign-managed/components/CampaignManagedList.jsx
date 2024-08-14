@@ -13,10 +13,12 @@ import { toast } from "react-toastify";
 import { FaCalendarDay } from "react-icons/fa6";
 import { trimRightToChar } from "@/utils/stringManilupation";
 import { redirect } from "next/navigation";
+import { tokenRole } from "@/token/tokenRole";
 
 
 export default function CampaignManagedList() {
     const { getAuthToken } = tokenAuth();
+    const { getRoleToken } = tokenRole();
     const [data, setData] = useState();
     const  [user, setUser] = useState();
     const [nextURL, setNextURL] = useState()
@@ -31,7 +33,7 @@ export default function CampaignManagedList() {
 
     if(!getAuthToken()){
       redirect('/login')
-  }
+    }
 
     /* PAGINATION */
     async function paginationHandler(url) {
@@ -54,8 +56,9 @@ export default function CampaignManagedList() {
          setSearchSubmit(false)
       }
           try{
-              const result = await axiosClientAPI.get(`campaign-managed-list-by-user?search=${search}`, config)
+              const result = await axiosClientAPI.get(`campaign-managed-list-by-user-author?search=${search}`, config)
               .then((response) => {
+                  setData(response.data.data);
                   setPrevURL(response.data.links.prev)
                   setNextURL(response.data.links.next)
                   setSearch(search)
@@ -69,7 +72,7 @@ export default function CampaignManagedList() {
     /* GET DATA */
     async function getData() {
         try{
-          const result = await axiosClientAPI.get(`campaign-managed-list-by-user`, config)
+          const result = await axiosClientAPI.get(`campaign-managed-list-by-user-author`, config)
             .then((response) => {
               setData(response.data.data);
               setPrevURL(response.data.links.prev)
@@ -79,7 +82,6 @@ export default function CampaignManagedList() {
             console.error(`Error: ${error}`)
           }   
     } 
-
 
     async function getUser() {
         try{
@@ -117,7 +119,7 @@ export default function CampaignManagedList() {
 
     if(!data){ return ( <Loader />)}
 
-    console.log(data)
+ 
 
   return (
       
@@ -158,10 +160,14 @@ export default function CampaignManagedList() {
               </div>
              
               <div className='lg:w-[60%] w-[100%] grid lg:grid-cols-4 grid-cols-2 gap-3'>
-                  <Link
-                    href='/campaign-managed/add'
-                    className='text-center transition-all duration-150 ease-in rounded-lg px-5 py-4 bg-gradient-to-br from-blue-600 to-[#6c0868] text-white border hover:bg-gradient-to-br  hover:from-[#6c0868] hover:to-blue-600 hover:text-white '>
-                    Create Campaign</Link>
+                  {getRoleToken() < 3 &&
+                    <Link
+                      href='/campaign-managed/add'
+                      className='text-center transition-all duration-150 ease-in rounded-lg px-5 py-4 bg-gradient-to-br from-blue-600 to-[#6c0868] text-white border hover:bg-gradient-to-br  hover:from-[#6c0868] hover:to-blue-600 hover:text-white '>
+                      Create Campaign
+                    </Link>
+                  }
+
                   <Link
                     href='/voucher-issue'
                     className='text-center transition-all duration-150 ease-in rounded-lg px-5 py-4 bg-gradient-to-br from-green-700 to-blue-600 text-white border hover:bg-gradient-to-br  hover:from-blue-600 hover:to-green-700 hover:text-white '>
@@ -213,20 +219,30 @@ export default function CampaignManagedList() {
                           <Link title="View" href={`/campaign-managed/${item.id}`}> 
                               <FaEye className='hover:text-blue-500 duration-150 hover:scale-110 transition-all ease-in'/> 
                           </Link>
-                          <Link title="Edit" href={`/campaign-managed/edit/${item.id}`}> 
-                              <MdEdit className='hover:text-green-500 duration-150 hover:scale-110 transition-all ease-in' /> 
-                          </Link>
-                          <Link title="Update Status" href={`/campaign-managed/status/${item.id}`}> 
-                              <TbProgress className='hover:text-gray-500 duration-150 hover:scale-110 transition-all ease-in' /> 
-                          </Link>
-                          <Link title="Update Dates" href={`/campaign-managed/duration/${item.id}`}> 
-                              <FaCalendarDay className='hover:text-cyan-500 duration-150 hover:scale-110 transition-all ease-in' /> 
-                          </Link>
-                          <button title="Delete"> 
-                              <MdDeleteForever 
-                                onClick={() => deleteData(item.id)}
-                                className='hover:text-red-500 duration-150 hover:scale-110 transition-all ease-in' /> 
-                          </button>
+                          {getRoleToken() <= 3 && 
+                            <>
+                            <Link title="Edit" href={`/campaign-managed/edit/${item.id}`}> 
+                                <MdEdit className='hover:text-green-500 duration-150 hover:scale-110 transition-all ease-in' /> 
+                            </Link>
+                            <Link title="Update Status" href={`/campaign-managed/status/${item.id}`}> 
+                                <TbProgress className='hover:text-gray-500 duration-150 hover:scale-110 transition-all ease-in' /> 
+                            </Link>
+                            </>
+                          }
+                          {getRoleToken() <= 2 && 
+                          <>
+                            <Link 
+                              title="Update Dates" 
+                              href={`/campaign-managed/duration/${item.id}`}> 
+                                <FaCalendarDay className='hover:text-cyan-500 duration-150 hover:scale-110 transition-all ease-in' /> 
+                            </Link>
+                            <button title="Delete"> 
+                                <MdDeleteForever 
+                                  onClick={() => deleteData(item.id)}
+                                  className='hover:text-red-500 duration-150 hover:scale-110 transition-all ease-in' /> 
+                            </button>
+                          </>
+                          }
                           
                       </div>
                 </div>

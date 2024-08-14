@@ -2,6 +2,8 @@
 import axiosClientAPI from "@/api/axiosClientAPI";
 import Loader from "@/app/components/Loader";
 import { tokenAuth } from "@/token/tokenAuth";
+import { tokenRole } from "@/token/tokenRole";
+import { darkBounce } from "@/utils/toastify";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
@@ -13,6 +15,7 @@ import { Bounce, toast } from "react-toastify";
 export default function AppInfoEdit({ id }) {
     const router = useRouter();
     const { getAuthToken } = tokenAuth();
+    const { getRoleToken } = tokenRole();
     const [data, setData] = useState();
     const [isSubmit, setIsSubmit] = useState(false);
     const config = {
@@ -30,8 +33,6 @@ export default function AppInfoEdit({ id }) {
             const result = await axiosClientAPI.get(`app-info`, config)
             .then((response) => {
                 setData(response.data.data);
-                console.log('APP INFO');
-                console.log(response.data);
             })
             } catch (error) {
             console.error(`Error: ${error}`)
@@ -55,17 +56,7 @@ export default function AppInfoEdit({ id }) {
           .then((response) => {
             setData(response.data.data)
             setIsSubmit(false);
-            toast.success(response.data.message, {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                transition: Bounce,
-            });
+            toast.success(response.data.message, darkBounce);
             router.push('/admin/app-info/view')
           })
       } catch (error) {
@@ -179,6 +170,7 @@ export default function AppInfoEdit({ id }) {
           </div>
          
           <div className="w-[100%] mb-[2rem] flex items-center justify-center gap-4">
+            { getRoleToken() <= 1 &&
                 <button 
                     onClick={ () => {
                       setIsSubmit(true); }}
@@ -194,7 +186,9 @@ export default function AppInfoEdit({ id }) {
                     }
                     
                 </button>
+            }
           </div>
+       
         </section>
       
       </div>

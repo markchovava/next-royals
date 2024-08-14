@@ -51,7 +51,6 @@ export default function CampaignManagedList() {
               const result = await axiosClientAPI.get(`campaign-managed?search=${search}`, config)
               .then((response) => {
                   setData(response.data.data)
-                  console.log(response.data.links.prev)
                   setPrevURL(response.data.links.prev)
                   setNextURL(response.data.links.next)
                   setSearch(search)

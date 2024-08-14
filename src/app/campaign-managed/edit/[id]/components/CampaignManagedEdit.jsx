@@ -130,8 +130,8 @@ export default function CampaignManagedEdit({id, priceData }) {
         <div className='mx-auto w-[90%] flex items-center justify-end'>
             <Link
                 href={`/campaign-managed/${id}`}
-                className='flex items-center justify-center gap-1 rounded-xl py-[0.8rem] px-[2rem] bg-green-600 text-white border hover:bg-gradient-to-br  hover:from-green-600 hover:to-[#6c0868]'>
-                View Campaign</Link>
+                className='flex items-center justify-center gap-1 rounded-xl py-[0.8rem] px-[2rem] text-white bg-gradient-to-br to-green-600 from-[#6c0868] hover:bg-gradient-to-br hover:from-green-600 hover:to-[#6c0868]'>
+                View Managed Campaign</Link>
         </div>
 
          {/* Company Info */}

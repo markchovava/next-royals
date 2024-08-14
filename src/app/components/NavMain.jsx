@@ -14,7 +14,7 @@ import Image from 'next/image';
 export default function NavMain() {
     const router = useRouter();
     const { getAuthToken, removeAuthToken } = tokenAuth();
-    const { removeRoleToken } = tokenRole();
+    const { getRoleToken, removeRoleToken } = tokenRole();
     const [isLogout, setIsLogout] = useState(false)
     const [isCampaign, setIsCampaign] = useState(false);
     const config = {
@@ -92,14 +92,16 @@ export default function NavMain() {
                                     </li>
                                 </>
                                 }
-                                <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
-                                    <Link href='/voucher-redeem' className=" w-[100%]">REDEEM VOUCHERS</Link>
-                                </li>
-                                <li className="px-[0.5rem] py-1 pb-2 hover:bg-[#6c0868]">
-                                    <Link href='/voucher-reward' className=" w-[100%]">VERIFY REWARD</Link>
-                                </li>
-                               
-                                
+                                {getRoleToken() <= 3 && 
+                                    <>
+                                        <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
+                                            <Link href='/voucher-redeem' className=" w-[100%]">REDEEM VOUCHERS</Link>
+                                        </li>
+                                        <li className="px-[0.5rem] py-1 pb-2 hover:bg-[#6c0868]">
+                                            <Link href='/voucher-reward' className=" w-[100%]">VERIFY REWARD</Link>
+                                        </li>
+                                    </>
+                                }
                             </motion.ul>
                         </AnimatePresence>
                     }

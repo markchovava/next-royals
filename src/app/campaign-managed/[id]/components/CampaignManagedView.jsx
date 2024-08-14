@@ -145,8 +145,8 @@ export default function CampaignManagedView({ id }) {
                 
                 <Link
                     href={`/campaign-managed/edit/${id}`}
-                    className='flex items-center justify-center gap-1 rounded-xl py-[0.8rem] px-[2rem] bg-green-600 text-white border hover:bg-gradient-to-br  hover:from-green-600 hover:to-[#6c0868]'>
-                    Edit Campaign</Link>
+                    className='flex items-center justify-center gap-1 rounded-xl py-[0.8rem] px-[2rem] text-white bg-gradient-to-br to-green-400 from-[#6c0868] hover:bg-gradient-to-br hover:from-green-400 hover:to-[#6c0868]'>
+                    Edit Managed Campaign</Link>
             </div>
         }
 

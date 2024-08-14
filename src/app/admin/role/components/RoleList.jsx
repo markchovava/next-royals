@@ -2,6 +2,7 @@
 import axiosClientAPI from "@/api/axiosClientAPI";
 import Loader from "@/app/components/Loader";
 import { tokenAuth } from "@/token/tokenAuth";
+import { tokenRole } from "@/token/tokenRole";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
@@ -10,9 +11,9 @@ import { MdDeleteForever, MdEdit } from 'react-icons/md';
 
 
 
-
 export default function RoleList() {
-    const {getAuthToken} = tokenAuth();
+    const { getAuthToken } = tokenAuth();
+    const { getRoleToken } = tokenRole();
     const [data, setData] = useState();
     const [nextURL, setNextURL] = useState()
     const [prevURL, setPrevURL] = useState()
@@ -115,18 +116,21 @@ export default function RoleList() {
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
                       placeholder='Search by name...' 
-                      className='w-[100%] py-3 px-3 rounded-lg outline-none border border-blue-300' 
-                  />
+                      className='w-[100%] py-3 px-3 rounded-lg outline-none border border-blue-300' />
+                 
                   <button 
-                      onClick={() => setSearchSubmit(true)}
-                      className='transition-all duration-150 ease-in rounded-xl px-7 py-4 text-white border bg-gradient-to-br from-[#6c0868] to-[#50014c] hover:bg-gradient-to-br hover:from-[#50014c] hover:to-[#6c0868]'>
-                      Search</button>
+                    onClick={() => setSearchSubmit(true)}
+                    className='transition-all duration-150 ease-in rounded-xl px-7 py-4 text-white border bg-gradient-to-br from-[#6c0868] to-[#50014c] hover:bg-gradient-to-br hover:from-[#50014c] hover:to-[#6c0868]'>
+                    Search</button>
+      
               </div>
               <div>
+                { getRoleToken() <= 1 &&
                   <Link
                     href='/admin/role/add'
                     className='transition-all duration-150 ease-in rounded-2xl px-7 py-4 text-white border bg-gradient-to-br from-[#6c0868] to-[#50014c] hover:bg-gradient-to-br hover:from-[#50014c] hover:to-[#6c0868]'>
                     Add</Link>
+                }
               </div>
         </div>
 
@@ -149,14 +153,18 @@ export default function RoleList() {
                         <Link href={`/admin/role/${item.id}`}> 
                           <FaEye className='hover:text-blue-500 duration-150 hover:scale-110 transition-all ease-in'/> 
                         </Link>
-                        <Link href={`/admin/role/edit/${item.id}`}> 
-                          <MdEdit className='hover:text-green-500 duration-150 hover:scale-110 transition-all ease-in' /> 
-                        </Link>
-                        <button> 
-                          <MdDeleteForever 
-                            onClick={() => deleteData(item.id)}
-                            className='hover:text-red-500 duration-150 hover:scale-110 transition-all ease-in' /> 
-                        </button>
+                        {getRoleToken() <= 1 && 
+                          <>
+                          <Link href={`/admin/role/edit/${item.id}`}> 
+                            <MdEdit className='hover:text-green-500 duration-150 hover:scale-110 transition-all ease-in' /> 
+                          </Link>
+                          <button> 
+                            <MdDeleteForever 
+                              onClick={() => deleteData(item.id)}
+                              className='hover:text-red-500 duration-150 hover:scale-110 transition-all ease-in' /> 
+                          </button>
+                          </>
+                        }
                       </div>
                   </div>
               ))

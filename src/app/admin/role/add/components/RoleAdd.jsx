@@ -1,6 +1,7 @@
 "use client"
 import axiosClientAPI from "@/api/axiosClientAPI";
 import { tokenAuth } from "@/token/tokenAuth";
+import { darkBounce } from "@/utils/toastify";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
@@ -37,17 +38,7 @@ export default function RoleAdd() {
             setIsSubmit(false);
             router.push('/admin/role')
             const message = response.data?.message;
-            toast.warn(message, {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "dark",
-              transition: Bounce,
-            });
+            toast.warn(message, darkBounce);
             return;
           }
         })

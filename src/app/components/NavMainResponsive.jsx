@@ -16,7 +16,7 @@ export default function NavMainResponsive() {
     const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
     const { getAuthToken, removeAuthToken } = tokenAuth();
-    const { removeRoleToken } = tokenRole();
+    const { getRoleToken, removeRoleToken } = tokenRole();
     const [isActive, setIsActive] = useState({
       one:false
     })
@@ -104,12 +104,16 @@ export default function NavMainResponsive() {
                                     </li>
                                   </>
                                 }
-                                <li className="w-[100%] text-center px-[0.5rem] py-1 hover:bg-[#6c0868]">
-                                    <Link href='/voucher-redeem' className=" w-[100%]">REDEEM VOUCHERS</Link>
-                                </li>
-                                <li className="w-[100%] text-center px-[0.5rem] py-1 hover:bg-[#6c0868]">
-                                    <Link href='/voucher-reward' className=" w-[100%]">VERIFY REWARD</Link>
-                                </li>
+                                {getRoleToken() <= 3 && 
+                                  <>
+                                    <li className="w-[100%] text-center px-[0.5rem] py-1 hover:bg-[#6c0868]">
+                                        <Link href='/voucher-redeem' className=" w-[100%]">REDEEM VOUCHERS</Link>
+                                    </li>
+                                    <li className="w-[100%] text-center px-[0.5rem] py-1 hover:bg-[#6c0868]">
+                                        <Link href='/voucher-reward' className=" w-[100%]">VERIFY REWARD</Link>
+                                    </li>
+                                  </>
+                                }
                                
                                 
                             </motion.ul>

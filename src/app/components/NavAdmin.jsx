@@ -21,15 +21,15 @@ export default function NavAdmin() {
         four: false,
         five: false,
         six: false,
+        seven: false,
     });
     const {getAuthToken, removeAuthToken} = tokenAuth();
-    const { removeRoleToken } = tokenRole();
+    const { getRoleToken, removeRoleToken } = tokenRole();
     const config = {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${getAuthToken()}`
-      }}
-
+    }};
 
     /* LOGOUT */
     async function postLogout() {
@@ -87,90 +87,128 @@ export default function NavAdmin() {
                             }
                         </li>
                         
-                        {/* Users */}
-                        <li className="relative"
-                            onMouseEnter={() => setIsActive({two: true})}
-                            onMouseLeave={() => setIsActive({two: false})}
-                            onClick={() => { setIsActive({two: !isActive.two}) }}>
-                            <span className="cursor-pointer flex items-center justify-start gap-1 hover:text-blue-100">
-                                Users <IoChevronDownSharp />
-                            </span>
-                            { isActive.two && 
-                                <AnimatePresence>
-                                    <motion.ul 
-                                        initial={{ opacity:1 }}
-                                        animate={{ opacity:1 }}
-                                        exit={{ opacity:1 }}
-                                        transition={{ duration: 0.6, type:'spring' }}
-                                        className="top-[105%] left-[-0.5rem] w-[160%] bg-[#570253] absolute z-10">
-                                        <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
-                                            <Link href='/admin/user/add' className=" w-[100%]">Add User</Link>
-                                        </li>
-                                    
-                                        <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
-                                            <Link href='/admin/user' className=" w-[100%] h-[100%]">
-                                                User List</Link>
-                                        </li>
-                                    
-                                    </motion.ul>
-                                </AnimatePresence> 
-                            }
-                        </li>
-                        
-                        {/* Campaign */}
-                        <li className="relative"
-                            onMouseEnter={() => setIsActive({three: true})}
-                            onMouseLeave={() => setIsActive({three: false})}
-                            onClick={() => { setIsActive({three: !isActive.three}) }}>
-                            <span className="cursor-pointer flex items-center justify-start gap-1 hover:text-blue-100">
-                                Campaign <IoChevronDownSharp />
-                            </span>
-                            { isActive.three && 
-                                <AnimatePresence>
-                                    <motion.ul 
-                                        initial={{ opacity:1 }}
-                                        animate={{ opacity:1 }}
-                                        exit={{ opacity:1 }}
-                                        transition={{ duration: 0.6, type:'spring' }}
-                                        className="top-[105%] left-[-0.5rem] w-[160%] bg-[#570253] absolute z-10">
-                                        <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
-                                            <Link href='/admin/campaign/' className=" w-[100%]">Campaign List</Link>
-                                        </li>
+                        { getRoleToken() <= 2 &&
+                            <>
+                                {/* Users */}
+                                <li className="relative"
+                                    onMouseEnter={() => setIsActive({two: true})}
+                                    onMouseLeave={() => setIsActive({two: false})}
+                                    onClick={() => { setIsActive({two: !isActive.two}) }}>
+                                    <span className="cursor-pointer flex items-center justify-start gap-1 hover:text-blue-100">
+                                        Users <IoChevronDownSharp />
+                                    </span>
+                                    { isActive.two && 
+                                        <AnimatePresence>
+                                            <motion.ul 
+                                                initial={{ opacity:1 }}
+                                                animate={{ opacity:1 }}
+                                                exit={{ opacity:1 }}
+                                                transition={{ duration: 0.6, type:'spring' }}
+                                                className="top-[105%] left-[-0.5rem] w-[160%] bg-[#570253] absolute z-10">
+                                                <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
+                                                    <Link href='/admin/user/add' className=" w-[100%]">Add User</Link>
+                                                </li>
+                                            
+                                                <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
+                                                    <Link href='/admin/user' className=" w-[100%] h-[100%]">
+                                                        User List</Link>
+                                                </li>
+                                            
+                                            </motion.ul>
+                                        </AnimatePresence> 
+                                    }
+                                </li>
 
-                                    </motion.ul>
-                                </AnimatePresence> 
-                            }
-                        </li>
+                                {/* User Roles */}
+                                <li className="relative"
+                                    onMouseEnter={() => setIsActive({seven: true})}
+                                    onMouseLeave={() => setIsActive({seven: false})}
+                                    onClick={() => { setIsActive({seven: !isActive.seven}) }}>
+                                    <span className="cursor-pointer flex items-center justify-start gap-1 hover:text-blue-100">
+                                        User Roles <IoChevronDownSharp />
+                                    </span>
+                                    { isActive.seven && 
+                                        <AnimatePresence>
+                                            <motion.ul 
+                                                initial={{ opacity:1 }}
+                                                animate={{ opacity:1 }}
+                                                exit={{ opacity:1 }}
+                                                transition={{ duration: 0.6, type:'spring' }}
+                                                className="top-[105%] left-[-0.5rem] w-[160%] bg-[#570253] absolute z-10">
+                                                <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
+                                                    <Link href='/admin/user-role/add' className=" w-[100%]">Add User Role</Link>
+                                                </li>
+                                            
+                                                <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
+                                                    <Link href='/admin/user-role' className=" w-[100%] h-[100%]">
+                                                    User Role List</Link>
+                                                </li>
+                                            
+                                            </motion.ul>
+                                        </AnimatePresence> 
+                                    }
+                                </li>
+                            </>
+                        }
                         
-                        {/* Program */}
-                        <li className="relative"
-                            onMouseEnter={() => setIsActive({four: true})}
-                            onMouseLeave={() => setIsActive({four: false})}
-                            onClick={() => { setIsActive({four: !isActive.four}) }}>
-                            <span className="cursor-pointer flex items-center justify-start gap-1 hover:text-blue-100">
-                               Managed Campaign <IoChevronDownSharp />
-                            </span>
-                            { isActive.four && 
-                                <AnimatePresence>
-                                    <motion.ul 
-                                        initial={{ opacity:1 }}
-                                        animate={{ opacity:1 }}
-                                        exit={{ opacity:1 }}
-                                        transition={{ duration: 0.6, type:'spring' }}
-                                        className="top-[100%] left-[-0.5rem] w-[130%] bg-[#570253] absolute z-10">
-                                        <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
-                                            <Link href='/admin/campaign-managed/add' className=" w-[100%]">
-                                            Add Managed Campaign</Link>
-                                        </li>
-                                        <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
-                                            <Link href='/admin/campaign-managed' className=" w-[100%]">
-                                            Managed Campaign List</Link>
-                                        </li>    
-                                      
-                                    </motion.ul>
-                                </AnimatePresence> 
-                            }
-                        </li>
+                        {getRoleToken() <= 1 && 
+                            <>
+                                {/* Campaign */}
+                                <li className="relative"
+                                    onMouseEnter={() => setIsActive({three: true})}
+                                    onMouseLeave={() => setIsActive({three: false})}
+                                    onClick={() => { setIsActive({three: !isActive.three}) }}>
+                                    <span className="cursor-pointer flex items-center justify-start gap-1 hover:text-blue-100">
+                                        Campaign <IoChevronDownSharp />
+                                    </span>
+                                    { isActive.three && 
+                                        <AnimatePresence>
+                                            <motion.ul 
+                                                initial={{ opacity:1 }}
+                                                animate={{ opacity:1 }}
+                                                exit={{ opacity:1 }}
+                                                transition={{ duration: 0.6, type:'spring' }}
+                                                className="top-[105%] left-[-0.5rem] w-[160%] bg-[#570253] absolute z-10">
+                                                <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
+                                                    <Link href='/admin/campaign/' className=" w-[100%]">Campaign List</Link>
+                                                </li>
+
+                                            </motion.ul>
+                                        </AnimatePresence> 
+                                    }
+                                </li>
+                                
+                                {/* Managed Campaign */}
+                                <li className="relative"
+                                    onMouseEnter={() => setIsActive({four: true})}
+                                    onMouseLeave={() => setIsActive({four: false})}
+                                    onClick={() => { setIsActive({four: !isActive.four}) }}>
+                                    <span className="cursor-pointer flex items-center justify-start gap-1 hover:text-blue-100">
+                                    Managed Campaign <IoChevronDownSharp />
+                                    </span>
+                                    { isActive.four && 
+                                        <AnimatePresence>
+                                            <motion.ul 
+                                                initial={{ opacity:1 }}
+                                                animate={{ opacity:1 }}
+                                                exit={{ opacity:1 }}
+                                                transition={{ duration: 0.6, type:'spring' }}
+                                                className="top-[100%] left-[-0.5rem] w-[130%] bg-[#570253] absolute z-10">
+                                                <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
+                                                    <Link href='/admin/campaign-managed/add' className=" w-[100%]">
+                                                    Add Managed Campaign</Link>
+                                                </li>
+                                                <li className="px-[0.5rem] py-1 hover:bg-[#6c0868]">
+                                                    <Link href='/admin/campaign-managed' className=" w-[100%]">
+                                                    Managed Campaign List</Link>
+                                                </li>    
+                                            
+                                            </motion.ul>
+                                        </AnimatePresence> 
+                                    }
+                                </li>
+                            </>
+                        }
                         
                         
 
