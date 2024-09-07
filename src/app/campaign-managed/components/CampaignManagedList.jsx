@@ -160,7 +160,7 @@ export default function CampaignManagedList() {
               </div>
              
               <div className='lg:w-[60%] w-[100%] grid lg:grid-cols-4 grid-cols-2 gap-3'>
-                  {getRoleToken() < 3 &&
+                  {getRoleToken() <= 2 &&
                     <Link
                       href='/campaign-managed/add'
                       className='text-center transition-all duration-150 ease-in rounded-lg px-5 py-4 bg-gradient-to-br from-blue-600 to-[#6c0868] text-white border hover:bg-gradient-to-br  hover:from-[#6c0868] hover:to-blue-600 hover:text-white '>
@@ -212,14 +212,14 @@ export default function CampaignManagedList() {
                         </span>
                       </div>
                       <div className="w-[15%] p-3 border-l border-slate-300"> 
-                        {item.quantity_remaining ? item.quantity_remaining + ' of ' : ''}
+                        {item.quantity_remaining ? item.quantity_remaining + ' of ' : '0' + ' of '}
                         {item.quantity ? item.quantity : 'Not added.'}
                       </div>
                       <div className="w-[15%] p-3 border-l border-slate-300 flex justify-start items-center gap-3 text-xl">
                           <Link title="View" href={`/campaign-managed/${item.id}`}> 
                               <FaEye className='hover:text-blue-500 duration-150 hover:scale-110 transition-all ease-in'/> 
                           </Link>
-                          {getRoleToken() <= 3 && 
+                          {getRoleToken() <= 2 && 
                             <>
                             <Link title="Edit" href={`/campaign-managed/edit/${item.id}`}> 
                                 <MdEdit className='hover:text-green-500 duration-150 hover:scale-110 transition-all ease-in' /> 
@@ -227,10 +227,6 @@ export default function CampaignManagedList() {
                             <Link title="Update Status" href={`/campaign-managed/status/${item.id}`}> 
                                 <TbProgress className='hover:text-gray-500 duration-150 hover:scale-110 transition-all ease-in' /> 
                             </Link>
-                            </>
-                          }
-                          {getRoleToken() <= 2 && 
-                          <>
                             <Link 
                               title="Update Dates" 
                               href={`/campaign-managed/duration/${item.id}`}> 

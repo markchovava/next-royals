@@ -9,6 +9,8 @@ import axiosClientAPI from '@/api/axiosClientAPI';
 import { useRouter } from 'next/navigation';
 import { tokenAuth } from '@/token/tokenAuth';
 import { tokenRole } from '@/token/tokenRole';
+import { removeAuthCookie } from '@/cookie/authCookieClient';
+import { removeRoleCookie } from '@/cookie/roleCookieClient';
 
 
 
@@ -25,6 +27,7 @@ export default function NavAdmin() {
     });
     const {getAuthToken, removeAuthToken} = tokenAuth();
     const { getRoleToken, removeRoleToken } = tokenRole();
+
     const config = {
         headers: {
           'Content-Type': 'application/json',
@@ -39,6 +42,8 @@ export default function NavAdmin() {
             .then((response) => {
                 removeAuthToken();
                 removeRoleToken();
+                removeAuthCookie();
+                removeRoleCookie();
                 router.push(`/login`) 
             
             })

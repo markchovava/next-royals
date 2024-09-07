@@ -1,5 +1,7 @@
 "use client"
 import axiosClientAPI from '@/api/axiosClientAPI';
+import { removeAuthCookie } from '@/cookie/authCookieClient';
+import { removeRoleCookie } from '@/cookie/roleCookieClient';
 import { tokenAuth } from '@/token/tokenAuth';
 import { tokenRole } from '@/token/tokenRole';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -35,7 +37,9 @@ export default function NavMainResponsive() {
             .then((response) => {
               removeAuthToken();
               removeRoleToken();
-              removeIdToken();
+              /* COOKIE */
+              removeAuthCookie();
+              removeRoleCookie();
               router.push('/login');
               setIsLogout(false);
             })

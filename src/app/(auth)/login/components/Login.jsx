@@ -1,5 +1,7 @@
 "use client"
 import { baseURL } from "@/api/baseURL";
+import { setAuthCookie } from "@/cookie/authCookieClient";
+import { setRoleCookie } from "@/cookie/roleCookieClient";
 import { tokenAuth } from "@/token/tokenAuth";
 import { tokenRole } from "@/token/tokenRole";
 import { darkBounce } from "@/utils/toastify";
@@ -65,21 +67,29 @@ export default function Login() {
         try{ 
             const result = await axios.post(`${baseURL}login`, data)
             .then((response) => {
-              if(response.data.status == 1){
+              const res = response.data;
+              if(res.status == 1){
+                /* LOCALSTORAGE */
+                setAuthToken(res.auth_token);
+                setRoleToken(res.role_level);
+                /* COOKIE */
+                setAuthCookie(res.auth_token);
+                setRoleCookie(res.role_level);
+                toast.success(res.message, darkBounce);
                 setIsSubmit(false);
-                setAuthToken(response.data.auth_token);
-                setRoleToken(response.data.role_level);
                 router.push('/campaign-managed')
-                toast.success(response.data.message, darkBounce);
+                setTimeout(() => {
+                  window.location.reload();
+                }, 2000);
                 
-              } else if(response.data.status == 0) {
+              } else if(res.status == 0) {
                 setIsSubmit(false);
-                const message = response.data.message
+                const message = res.message
                 setErrorMsg({email: message});
                 toast.warn(message, darkBounce);
-              } else if(response.data.status == 2){
+              } else if(res.status == 2){
                 setIsSubmit(false);
-                const message = response.data.message;
+                const message = res.message;
                 setErrorMsg({password: message});
                 toast.warn(message, darkBounce);
               }

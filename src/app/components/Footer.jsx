@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import { MdPhoneIphone, MdOutlineMailOutline } from "react-icons/md";
 import { FaFacebook, FaInstagramSquare, FaPhoneAlt } from "react-icons/fa";

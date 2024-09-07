@@ -9,6 +9,8 @@ import { useRouter } from 'next/navigation';
 import { tokenAuth } from '@/token/tokenAuth';
 import { tokenRole } from '@/token/tokenRole';
 import Image from 'next/image';
+import { removeAuthCookie } from '@/cookie/authCookieClient';
+import { removeRoleCookie } from '@/cookie/roleCookieClient';
 
 
 export default function NavMain() {
@@ -30,6 +32,9 @@ export default function NavMain() {
             .then((response) => {
               removeAuthToken();
               removeRoleToken();
+              /* COOKIE */
+              removeAuthCookie();
+              removeRoleCookie();
               router.push('/login');
               setIsLogout(false);
             })

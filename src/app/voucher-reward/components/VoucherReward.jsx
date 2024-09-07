@@ -71,8 +71,6 @@ export default function VoucherReward() {
             campaign_managed_id: data.campaign_managed_id,
             voucher_reward_id: data.id,
         }
-        //console.log(formData)
-        //setIsSubmit(false);
         try{
             const result = await axiosClientAPI.post(`voucher-reward-used`, formData, config)
             .then((response) => {
